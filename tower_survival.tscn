@@ -1,0 +1,151 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4msthu2puely"]
+
+[ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
+[ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
+[ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pine_tree.tscn" id="2_qe1ew"]
+
+[sub_resource type="Curve2D" id="Curve2D_od0vt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -195, -73, 0, 0, 0, 0, 2050, -80, 0, 0, 0, 0, 2033, 1177, 0, 0, 0, 0, -188, 1170, 0, 0, 0, 0, -195, -73)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_wghd7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 1925.0
+offset_bottom = 1085.0
+
+[node name="Player" parent="." instance=ExtResource("1_bauih")]
+unique_name_in_owner = true
+position = Vector2(830, 519)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-830, -519)
+curve = SubResource("Curve2D_od0vt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-195, -73)
+rotation = -0.00311803
+
+[node name="Pine_Tree4" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(331, 778)
+
+[node name="Pine_Tree" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(412, 804)
+
+[node name="Pine_Tree3" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(483, 861)
+
+[node name="Pine_Tree2" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(344, 509)
+
+[node name="Pine_Tree5" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(974, 527)
+
+[node name="Pine_Tree6" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(511, 203)
+
+[node name="Pine_Tree7" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(178, 111)
+
+[node name="Pine_Tree8" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1449, 195)
+
+[node name="Pine_Tree9" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1508, 233)
+
+[node name="Pine_Tree10" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1689, 675)
+
+[node name="Pine_Tree11" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1255, 738)
+
+[node name="Pine_Tree12" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1218, 822)
+
+[node name="Pine_Tree13" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1306, 818)
+
+[node name="Pine_Tree14" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1100, 165)
+
+[node name="Pine_Tree15" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(115, 1020)
+
+[node name="Pine_Tree16" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(780, 1020)
+
+[node name="Pine_Tree17" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1706, 1032)
+
+[node name="Pine_Tree18" parent="." instance=ExtResource("2_qe1ew")]
+position = Vector2(1828, 982)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="game_over_screen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="game_over_screen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="game_over_screen/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="Control" type="Control" parent="game_over_screen"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="restart_button" type="Button" parent="game_over_screen/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 861.0
+offset_top = 657.0
+offset_right = 1006.0
+offset_bottom = 777.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/icon_normal_color = Color(0, 0.545098, 0, 1)
+theme_override_colors/font_color = Color(0, 0.984314, 0, 1)
+text = "Restart"
+
+[connection signal="death" from="Player" to="." method="_on_player_death"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="game_over_screen/Control/restart_button" to="." method="_on_restart_button_button_down"]

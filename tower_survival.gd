@@ -18,7 +18,7 @@ func spawn_mob():
 	
 func spawn_object():
 	#later will be a random object now is just a tree soo to be pillar.
-	const PILLAR = preload("res://pine_tree.tscn")
+	const PILLAR = preload("res://pillar.tscn")
 	var new_object = PILLAR.instantiate()
 	#Randomly create's the mob on a point along the path
 	%PathFollow2D.progress_ratio = randf()
@@ -37,6 +37,5 @@ func _on_player_death() -> void:
 	%game_over_screen.visible = true
 	
 func _on_restart_button_button_down() -> void:
-	print("Inside restart button")
 	%game_over_screen.visible = false
 	get_tree().reload_current_scene()

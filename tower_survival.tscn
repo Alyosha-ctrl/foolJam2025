@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
-[ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pine_tree.tscn" id="2_qe1ew"]
+[ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
 
 [sub_resource type="Curve2D" id="Curve2D_od0vt"]
 _data = {

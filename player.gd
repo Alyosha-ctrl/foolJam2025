@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
 signal death
-var health = 25.0
-var max_health = 25.0
+var strength = 1
+var grace = 1
+var power = 1
+var control = 1
+var defense = 1
+var max_health = 1000
+var health = max_health*1
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")

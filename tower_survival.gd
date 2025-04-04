@@ -1,5 +1,7 @@
 extends Node2D
 
+var time = 0.0
+
 func _ready() -> void:
 	get_tree().paused = false
 	for i in range(5):
@@ -13,15 +15,25 @@ func spawn_mob():
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
 	add_child(new_mob)
-
+	
+func spawn_object():
+	#later will be a random object now is just a tree soo to be pillar.
+	const PILLAR = preload("res://pine_tree.tscn")
+	var new_object = PILLAR.instantiate()
+	#Randomly create's the mob on a point along the path
+	%PathFollow2D.progress_ratio = randf()
+	new_object.global_position = %PathFollow2D.global_position
+	add_child(new_object)
 
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
 	spawn_mob()
+	spawn_object()
+	time+=($Timer.wait_time)
+	
 
 func _on_player_death() -> void:
-	print("Inside death")
 	%game_over_screen.visible = true
 	
 func _on_restart_button_button_down() -> void:

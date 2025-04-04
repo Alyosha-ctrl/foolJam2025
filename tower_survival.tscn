@@ -91,6 +91,7 @@ position = Vector2(1706, 1032)
 position = Vector2(1828, 982)
 
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.3
 autostart = true
 

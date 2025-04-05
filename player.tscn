@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://buoqd270n7r8v" path="res://gun.tscn" id="3_i3pqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 84.1724
+radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
-radius = 74.0
+radius = 83.0963
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtel"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
@@ -58,7 +58,6 @@ debug_color = Color(0.405622, 0.466561, 1, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
-position = Vector2(0, -51)
 
 [node name="hurt_box" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -71,7 +70,6 @@ debug_color = Color(1, 0, 0.0931407, 0.42)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = -85.0
 offset_top = -134.0
 offset_right = 86.0

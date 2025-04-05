@@ -12,20 +12,34 @@ collision_mask = 2
 script = ExtResource("1_dk5gl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(121, -11)
+position = Vector2(210, 0)
 shape = SubResource("CircleShape2D_dk5gl")
 
 [node name="weapon_pivot" type="Marker2D" parent="."]
 
+[node name="Polygon2D2" type="Polygon2D" parent="weapon_pivot"]
+position = Vector2(-23, 3)
+scale = Vector2(1.12727, 1.19231)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(156, -28, 156, 24, 211, -3)
+
+[node name="Polygon2D" type="Polygon2D" parent="weapon_pivot/Polygon2D2"]
+position = Vector2(19.5161, -4.76837e-07)
+scale = Vector2(0.887097, 0.83871)
+polygon = PackedVector2Array(156, -28, 156, 24, 211, -3)
+
+[node name="shooting_point" type="Marker2D" parent="weapon_pivot/Polygon2D2"]
+unique_name_in_owner = true
+position = Vector2(206.694, -4.76837e-07)
+scale = Vector2(0.887097, 0.83871)
+
 [node name="Pistol" type="Sprite2D" parent="weapon_pivot"]
-position = Vector2(96, 0)
+visible = false
+position = Vector2(188, 6)
 texture = ExtResource("1_vk1bi")
 
-[node name="shooting_point" type="Marker2D" parent="weapon_pivot/Pistol"]
-unique_name_in_owner = true
-position = Vector2(25, -11)
-
 [node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.1
 autostart = true
 

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var type = "nuetral"
 var health = 3
 var strength = 1
 var grace = 1

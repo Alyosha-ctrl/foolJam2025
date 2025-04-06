@@ -8,8 +8,6 @@ var power = 1
 var control = 1
 var defense = 1
 @onready var player = get_node("/root/Game/Player")
-func _ready() -> void:
-	$%Slime.play_walk()
 
 func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
@@ -23,7 +21,6 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage):
 	#Later take in type to alter damage as well as defense
 	health-=damage
-	$%Slime.play_hurt()
 	if(health == 0):
 		#Hides death.
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")

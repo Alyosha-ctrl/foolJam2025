@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgt6u56l0ew47"]
+[gd_scene load_steps=5 format=3 uid="uid://dgt6u56l0ew47"]
 
+[ext_resource type="Script" uid="uid://cs6k0n88f35gd" path="res://pillar.gd" id="1_r8rte"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_tcmdu"]
 [ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://trees/pine_tree.png" id="2_r8rte"]
 
@@ -7,6 +8,7 @@
 radius = 19.105
 
 [node name="Pillar" type="StaticBody2D"]
+script = ExtResource("1_r8rte")
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
 modulate = Color(0.2, 0.2, 0.2, 1)

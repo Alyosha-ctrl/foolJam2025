@@ -1,6 +1,6 @@
 extends Area2D
 
-var cooldown = 0.5
+var cooldown = 0.01
 var time = 0.0
 
 

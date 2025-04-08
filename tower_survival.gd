@@ -28,8 +28,12 @@ func spawn_object():
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	spawn_mob()
-	spawn_object()
+	var max_entities = 500
+	if(!(len(get_children()) > max_entities)):
+		spawn_mob()
+		spawn_object()
+	else:
+		print("More than " + str(max_entities) + " entities")
 	time+=($Timer.wait_time)
 	
 
@@ -39,3 +43,4 @@ func _on_player_death() -> void:
 func _on_restart_button_button_down() -> void:
 	%game_over_screen.visible = false
 	get_tree().reload_current_scene()
+	

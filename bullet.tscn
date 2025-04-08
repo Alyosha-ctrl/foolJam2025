@@ -12,11 +12,22 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_v8qja")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(1.09677, 1.16667)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-13, -12, -13, 12, 18, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+scale = Vector2(0.630258, 0.845238)
+polygon = PackedVector2Array(-18.8065, -12.169, -18.8065, 12.169, 23.1464, 0)
+
 [node name="Projectile" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-11, -1)
 texture = ExtResource("2_t4vbm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
 shape = SubResource("CircleShape2D_2b2rl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

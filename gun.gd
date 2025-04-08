@@ -1,6 +1,6 @@
 extends Area2D
 
-var cooldown = 0.5
+var cooldown = 0.01
 var time = 0.0
 
 
@@ -17,10 +17,11 @@ func shoot():
 	const BULLET = preload("res://bullet.tscn")
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = $%shooting_point.global_position
+	#Replace with the rotation aimed at the nearest enemy
 	new_bullet.global_rotation = $%shooting_point.global_rotation
 	$%shooting_point.add_child(new_bullet)
 
 	
 	
 func _on_timer_timeout() -> void:
-	time += 0.1
+	time += %Timer.wait_time

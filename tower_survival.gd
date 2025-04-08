@@ -28,7 +28,7 @@ func spawn_object():
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	var max_entities = 500
+	var max_entities = 1000
 	if(!(len(get_children()) > max_entities)):
 		spawn_mob()
 		spawn_object()

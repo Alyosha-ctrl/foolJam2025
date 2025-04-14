@@ -125,6 +125,60 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "Game Over"
 
+[node name="Label2" type="Label" parent="game_over_screen/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -878.0
+offset_top = -526.0
+offset_right = -335.0
+offset_bottom = -389.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
+[node name="Label3" type="Label" parent="game_over_screen/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -880.0
+offset_top = -468.0
+offset_right = -315.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Director
+Alexey “Azriel” Berezhnoy
+
+Game Programmers
+Alexey “Azriel” Berezhnoy
+Joshua Christopher Jose Torres-Hopkins
+
+Sound Designer
+Joshua Christopher Jose Torres-Hopkins
+
+Code Advisors
+Zionna Brown
+Jackie ___
+Joshua Christopher Jose Torres-Hopkins
+
+Playtesters
+Zionna Brown
+Joshua Christopher Jose Torres-Hopkins
+Tomas ___
+Emanuel ___
+Alora Cochrane
+Alexey “Azriel” Berezhnoy
+"
+
 [node name="Control" type="Control" parent="game_over_screen"]
 layout_mode = 3
 anchors_preset = 0

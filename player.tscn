@@ -67,6 +67,7 @@ offset_bottom = -146.0
 theme_override_styles/background = ExtResource("3_hqtel")
 theme_override_styles/fill = SubResource("StyleBoxFlat_onrkg")
 value = 100.0
+show_percentage = false
 
 [node name="qi_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -77,5 +78,6 @@ offset_bottom = -102.0
 theme_override_styles/background = ExtResource("3_hqtel")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i3pqv")
 value = 100.0
+show_percentage = false
 
 [connection signal="changed_speed" from="." to="." method="_on_changed_speed"]

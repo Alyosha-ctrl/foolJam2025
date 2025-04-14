@@ -22,12 +22,14 @@ offset_left = -9.0
 offset_top = -8.0
 offset_right = 1925.0
 offset_bottom = 1085.0
+color = Color(0.366595, 0.366595, 0.366595, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_bauih")]
 unique_name_in_owner = true
 position = Vector2(830, 519)
 
 [node name="Path2D" type="Path2D" parent="Player"]
+unique_name_in_owner = true
 position = Vector2(-830, -519)
 curve = SubResource("Curve2D_od0vt")
 
@@ -92,7 +94,7 @@ position = Vector2(1828, 982)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.3
+wait_time = 0.25
 autostart = true
 
 [node name="game_over_screen" type="CanvasLayer" parent="."]
@@ -147,6 +149,7 @@ theme_override_colors/icon_normal_color = Color(0, 0.545098, 0, 1)
 theme_override_colors/font_color = Color(0, 0.984314, 0, 1)
 text = "Restart"
 
+[connection signal="changed_speed" from="Player" to="." method="_on_player_changed_speed"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="game_over_screen/Control/restart_button" to="." method="_on_restart_button_button_down"]

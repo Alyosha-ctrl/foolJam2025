@@ -132,10 +132,10 @@ anchor_left = 0.184
 anchor_top = 0.076
 anchor_right = 0.184
 anchor_bottom = 0.076
-offset_left = -271.28
-offset_top = -68.08
-offset_right = 271.72
-offset_bottom = 68.92
+offset_left = -344.28
+offset_top = -78.08
+offset_right = 198.72
+offset_bottom = 58.92
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
@@ -148,10 +148,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -273.5
-offset_top = -10.5
-offset_right = 291.5
-offset_bottom = 866.5
+offset_left = -268.5
+offset_top = -16.5
+offset_right = 1117.5
+offset_bottom = 1016.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
@@ -166,9 +166,9 @@ Sound Designer
 Joshua Christopher Jose Torres-Hopkins
 
 Code Advisors
-Zionna Brown
-Jackie Luc
-Joshua Christopher Jose Torres-Hopkins
+Zionna Brown, various help in wrangling Godot
+Jackie Luc, increased speed, altering camera zoom
+Joshua Christopher Jose Torres-Hopkins, performance help
 
 Playtesters
 Alora Cochrane
@@ -177,6 +177,11 @@ Joshua Christopher Jose Torres-Hopkins
 Tomas ___
 Emanuel ___
 Alexey “Azriel” Berezhnoy
+
+Intenet Obtained Code
+GDQuest, for \"Your First 2D GAME From Zero in Godot 4 **Vampire Survivor Style**\"
+Tutorial, and source code, used, and modified under the CC by 4.0 license, https://creativecommons.org/licenses/by/4.0/
+Loipesnas for \"Smoother look_at() in 2d\"
 "
 
 [node name="Control" type="Control" parent="game_over_screen"]

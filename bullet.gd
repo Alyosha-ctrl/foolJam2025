@@ -4,7 +4,7 @@ var technique = "null"
 
 var travelled_disance = 0
 var speed = 1000
-var technique_size = 100000
+var technique_size = 1000
 var value = 0
 var element = "creation"
 var pierce = 0

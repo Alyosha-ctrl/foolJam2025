@@ -36,6 +36,10 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction*speed
 	move_and_slide()
+	var overlaps = %hurt_box.get_overlapping_bodies()
+	for entity in overlaps:
+		entity.take_damage(strength, "bump", strength*2)
+			
 
 func take_damage(damage, element, pierce):
 	var defense_local = defense-pierce

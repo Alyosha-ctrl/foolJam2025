@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+var actor_type : String = "player"
+
+
 signal death
 signal changed_speed
 var strength : float = 1
@@ -21,8 +24,6 @@ func calculate_speed():
 func set_speed(new_speed):
 	speed = new_speed
 	var new_zoom = 1/(speed/speed_multiplier)
-	print("New Zoom")
-	print(new_zoom)
 	if(new_zoom <= zoom_cap):
 		new_zoom = zoom_cap
 	%Camera2D.zoom = Vector2(1,1)*new_zoom
@@ -36,13 +37,22 @@ func _physics_process(delta: float) -> void:
 	velocity = direction*speed
 	move_and_slide()
 
-func take_damage(damage, element):
-	#Later take in type to alter damage as well as defense
-	#Need to know how to do this in accordance to time.
-	damage -= defense
+func take_damage(damage, element, pierce):
+	var defense_local = defense-pierce
+	if(defense_local < 0):
+		defense_local = 0
+	damage -= defense_local
 	if(damage <= 0):
 		damage = 1
-	health-=damage
+	health -= damage
+	print("Pierce")
+	print(pierce)
+	print("Defense")
+	print(defense)
+	print("Defense Local")
+	print(defense_local)
+	print("Damage")
+	print(damage)
 	%ProgressBar.value = 100*(health/max_health)
 	if(health <= 0):
 		#Hides death.

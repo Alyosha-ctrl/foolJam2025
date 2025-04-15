@@ -99,6 +99,7 @@ autostart = true
 
 [node name="game_over_screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="game_over_screen"]
 anchors_preset = 15

@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-func take_damage(damage, element):
+func take_damage(damage, element, pierce):
 	if(element != "bump"):
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate()

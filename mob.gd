@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var actor_type : String = "mob"
+
 #How to use parent timers, and how to copy functions.
 var strength : float = 1.0
 var grace : float = 1
@@ -24,13 +26,19 @@ func _physics_process(delta: float) -> void:
 	if(time >= cooldown):
 		var overlaps = %hurt_box.get_overlapping_bodies()
 		if(player in overlaps):
-			player.take_damage(strength, "bump")
+			player.take_damage(strength, "bump", strength*2)
 		time = 0.0
 		
 		
 
-func take_damage(damage, element):
+func take_damage(damage, element, pierce):
 	#Later take in type to alter damage as well as defense
+	var defense_local = defense-pierce
+	if(defense_local <= 0):
+		defense_local = 1
+	damage -= defense_local
+	if(damage <= 0):
+		damage = 1
 	health-=damage
 	if(health <= 0):
 		#Hides death.

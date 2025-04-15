@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	var overlaps = %hurt_box.get_overlapping_bodies()
 	for entity in overlaps:
-		entity.take_damage(strength, "bump", strength*2)
+		entity.take_damage(strength*delta, "bump", strength*2)
 			
 
 func take_damage(damage, element, pierce):

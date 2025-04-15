@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 var actor_type : String = "mob"
+var stat_dist : float = 5
+var level : int = 1
 
 #How to use parent timers, and how to copy functions.
 var strength : float = 1.0
@@ -77,3 +79,19 @@ func add_stats(statMult):
 		health = max_health*1
 		max_qi = power*25
 		qi = max_qi*1
+		
+func level_up():
+	add_stats(stat_dist)
+	level += 1
+	if(level%10 == 0):
+		increase_stage()
+		
+func increase_stage():
+	multiply_stats((level/10) + 1)
+	#Multiplies the new stat distribution
+	stat_dist*=(level/10) + 1
+	
+func set_level(level_num : int):
+	for i in range(level_num):
+		level_up()
+	

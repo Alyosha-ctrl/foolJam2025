@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var actor_type : String = "player"
 
+var stat_dist : float = 5
+var level : int = 1
 
 signal death
 signal changed_speed
@@ -91,5 +93,19 @@ func add_stats(statMult):
 	qi = max_qi*1
 	set_speed(calculate_speed())
 	%ProgressBar.value = 100*(health/max_health)
+	
+func level_up():
+	add_stats(stat_dist)
+	level += 1
+	if(level%10 == 0):
+		increase_stage()
+	print("Level Up")
+	print("Level: " + str(level))
+		
+func increase_stage():
+	multiply_stats((level/10) + 1)
+	#Multiplies the new stat distribution
+	stat_dist*=(level/10) + 1
+	print("Stage Increased")
 		
 	

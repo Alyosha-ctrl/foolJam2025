@@ -15,7 +15,7 @@ func spawn_mob():
 	#In the future this will also create the color of the mob
 	#And it's random technique's
 	var new_mob = preload("res://mob.tscn").instantiate()
-	new_mob.add_stats(overall_stats)
+	new_mob.set_level(%Player.level-1)
 	#Randomly create's the mob on a point along the path
 	%PathFollow2D.progress_ratio = randf()
 	new_mob.global_position = %PathFollow2D.global_position
@@ -32,17 +32,9 @@ func spawn_object():
 
 func level_up():
 	if(int(round(time+1))%level_time == 0):
-		print("Time Value")
-		print(time)
-		print("Stat Multiplier")
-		print(stat_mult)
-		print("Player Speed")
-		print(%Player.calculate_speed())
-		%Player.add_stats(stat_mult)
-		stat_mult=stat_mult*2
-		overall_stats += stat_mult
+		%Player.level_up()
 		time = 0
-		player_level+=1
+		
 
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 

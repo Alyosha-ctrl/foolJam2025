@@ -99,7 +99,6 @@ autostart = true
 
 [node name="game_over_screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="game_over_screen"]
 anchors_preset = 15
@@ -125,33 +124,33 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "Game Over"
 
-[node name="Label2" type="Label" parent="game_over_screen/ColorRect"]
+[node name="credits" type="Label" parent="game_over_screen/ColorRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -878.0
-offset_top = -526.0
-offset_right = -335.0
-offset_bottom = -389.0
+anchors_preset = -1
+anchor_left = 0.184
+anchor_top = 0.076
+anchor_right = 0.184
+anchor_bottom = 0.076
+offset_left = -271.28
+offset_top = -68.08
+offset_right = 271.72
+offset_bottom = 68.92
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Credits"
 
-[node name="Label3" type="Label" parent="game_over_screen/ColorRect"]
+[node name="Label3" type="Label" parent="game_over_screen/ColorRect/credits"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -880.0
-offset_top = -468.0
-offset_right = -315.0
-offset_bottom = 409.0
+offset_left = -273.5
+offset_top = -10.5
+offset_right = 291.5
+offset_bottom = 866.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24

@@ -30,13 +30,12 @@ script = ExtResource("1_onrkg")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(0, 38)
-scale = Vector2(1.04795, 1.08571)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, -110, 47, -93, 73, -50, 64, -1, 27, 29, -25, 30, -63, -1, -73, -50, -47, -94)
 
 [node name="Polygon2D2" type="Polygon2D" parent="Polygon2D"]
-position = Vector2(0, -2.76316)
-scale = Vector2(0.954248, 0.921053)
+position = Vector2(0, -8)
+scale = Vector2(0.8, 0.772)
 polygon = PackedVector2Array(0, -110, 47, -93, 73, -50, 64, -1, 27, 29, -25, 30, -63, -1, -73, -50, -47, -94)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

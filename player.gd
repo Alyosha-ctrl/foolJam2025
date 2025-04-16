@@ -51,14 +51,6 @@ func take_damage(damage, element, pierce):
 	if(damage <= 0):
 		damage = 1
 	health -= damage
-	print("Pierce")
-	print(pierce)
-	print("Defense")
-	print(defense)
-	print("Defense Local")
-	print(defense_local)
-	print("Damage")
-	print(damage)
 	%ProgressBar.value = 100*(health/max_health)
 	if(health <= 0):
 		#Hides death.

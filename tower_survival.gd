@@ -18,7 +18,6 @@ func spawn_mob():
 	#And it's random technique's
 	var spawn_type = ["swarm", "mob", "boss", "swarm", "swarm", "mob"]
 	spawn_type = spawn_type[randi_range(0,len(spawn_type)-1)]
-	print("Spawn Type: " + str(spawn_type))
 	if(spawn_type == "mob"):
 		var new_mob = preload("res://mob.tscn").instantiate()
 		new_mob.set_level(%Player.level-1)
@@ -48,7 +47,7 @@ func spawn_mob():
 		add_child(new_mob2)
 	elif(spawn_type == "boss"):
 		var new_mob = preload("res://mob.tscn").instantiate()
-		new_mob.set_level(%Player.level+1)
+		new_mob.set_level(%Player.level)
 		new_mob.scale = Vector2(1.25, 1.25)
 		#Randomly create's the mob on a point along the path
 		%PathFollow2D.progress_ratio = randf()
@@ -73,7 +72,7 @@ func level_up():
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	var max_entities = 100
+	var max_entities = 500
 	level_up()
 	if(!(len(get_children()) > max_entities)):
 		spawn_mob()

@@ -10,7 +10,7 @@ var grace : float = 1
 var power : float = 1.0
 var control : float = 1.0
 var defense : float = 1.0
-var max_health : float = strength*25
+var max_health : float = strength*15
 var health : float = max_health*1
 var max_qi : float = power*25
 var qi : float = max_qi*1
@@ -75,7 +75,7 @@ func add_stats(statMult):
 		power+=statMult
 		control+=statMult
 		defense+=statMult
-		max_health = strength*25
+		max_health = strength*15
 		health = max_health*1
 		max_qi = power*25
 		qi = max_qi*1

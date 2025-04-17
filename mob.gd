@@ -19,6 +19,7 @@ const speed_multiplier: float = 300
 @onready var player = get_node("/root/Game/Player")
 @onready var game = get_node("/root/Game")
 @onready var cooldown = %Timer.wait_time
+	
 
 func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	if(time >= cooldown):
 		var overlaps = %hurt_box.get_overlapping_bodies()
 		if(player in overlaps):
+			visible = true
 			player.take_damage(strength, "bump", strength*2)
 		time = 0.0
 		
@@ -95,3 +97,11 @@ func set_level(level_num : int):
 	for i in range(level_num):
 		level_up()
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	%border.visible = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	%border.visible = false

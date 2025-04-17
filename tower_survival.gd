@@ -20,14 +20,14 @@ func spawn_mob():
 	spawn_type = spawn_type[randi_range(0,len(spawn_type)-1)]
 	if(spawn_type == "mob"):
 		var new_mob = preload("res://mob.tscn").instantiate()
-		new_mob.set_level(%Player.level-1)
+		new_mob.set_level(%Player.level-2)
 		#Randomly create's the mob on a point along the path
 		%PathFollow2D.progress_ratio = randf()
 		new_mob.global_position = %PathFollow2D.global_position
 		add_child(new_mob)
 	elif(spawn_type == "swarm"):
 		var new_mob = preload("res://mob.tscn").instantiate()
-		new_mob.set_level(%Player.level-2)
+		new_mob.set_level(%Player.level-3)
 		new_mob.scale = Vector2(.75, .75)
 		var new_mob1 = preload("res://mob.tscn").instantiate()
 		new_mob1.set_level(%Player.level-2)
@@ -47,7 +47,7 @@ func spawn_mob():
 		add_child(new_mob2)
 	elif(spawn_type == "boss"):
 		var new_mob = preload("res://mob.tscn").instantiate()
-		new_mob.set_level(%Player.level)
+		new_mob.set_level(%Player.level-1)
 		new_mob.scale = Vector2(1.25, 1.25)
 		#Randomly create's the mob on a point along the path
 		%PathFollow2D.progress_ratio = randf()

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgt6u56l0ew47"]
+[gd_scene load_steps=4 format=3 uid="uid://dgt6u56l0ew47"]
 
 [ext_resource type="Script" uid="uid://cs6k0n88f35gd" path="res://pillar.gd" id="1_r8rte"]
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_tcmdu"]
-[ext_resource type="Texture2D" uid="uid://caqfk2xng5v5u" path="res://trees/pine_tree.png" id="2_r8rte"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikdqj"]
 radius = 19.105
@@ -10,29 +9,33 @@ radius = 19.105
 [node name="Pillar" type="StaticBody2D"]
 script = ExtResource("1_r8rte")
 
-[node name="GroundShadow" type="Sprite2D" parent="."]
-modulate = Color(0.2, 0.2, 0.2, 1)
-position = Vector2(0.0769196, 12)
-scale = Vector2(0.692308, 0.692308)
-texture = ExtResource("1_tcmdu")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.0769196, 0)
 shape = SubResource("CircleShape2D_ikdqj")
 
-[node name="PineTree" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-1, -59)
-texture = ExtResource("2_r8rte")
-
 [node name="ColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
 offset_left = -17.0
 offset_top = -113.0
 offset_right = 17.0
 offset_bottom = 14.0
 color = Color(0, 0, 0, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(0.768, -0.309)
+[node name="Polygon2D" type="Polygon2D" parent="ColorRect"]
+position = Vector2(17.768, 112.691)
 scale = Vector2(0.766045, 1.26086)
 polygon = PackedVector2Array(-18.0968, -85.8461, 15.9677, -85.8461, 15.9667, 8.17583, -18.0968, 8.17583)
+
+[node name="GroundShadow" type="Sprite2D" parent="ColorRect"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+show_behind_parent = true
+position = Vector2(17.0769, 125)
+scale = Vector2(0.692308, 0.692308)
+texture = ExtResource("1_tcmdu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(9.53674e-07, -41)
+scale = Vector2(3.1, 7.4)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

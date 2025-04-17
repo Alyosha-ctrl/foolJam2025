@@ -2,18 +2,31 @@ extends Area2D
 
 
 @onready var caster = get_parent()
-
-var cooldown : float = 0.5
-var time : float = 0.0
 var type : String = "ranged"
 var element : String = "creation"
+var modifier : String = "auto_aim"
+var action : String = "shoot"
+
+var time : float = 0.0
+
+var level:int=1
+var cooldown : float = .5
+var high_cooldown:float = .5
 var cost : float = 0
 var value : float = 5.0
 var pierce : float = 1
-
-
+var wait_time : float = cooldown
+var stat_dist : Dictionary = {"cooldown": 1, "cost":5, "value":5, "pierce":1, "wait_time":.5}
+	
+func set_cooldown():
+	cooldown = high_cooldown-(caster.control*stat_dist["cooldown"]/9.9)
+	
+	
+func _ready() -> void:
+	set_cooldown()
 
 func _physics_process(delta: float) -> void:
+	time+=delta
 	if(!caster.actor_type == "mob"):
 		var enemies_in_range = get_overlapping_bodies()
 		if(enemies_in_range.size() > 0):
@@ -55,7 +68,33 @@ func shoot():
 	new_bullet.global_rotation = $%shooting_point.global_rotation
 	$%shooting_point.add_child(new_bullet)
 
+#MAYBE MAKE THIS MORE EFFICIENT
+func set_level(level_num : int)->void:
+	for i in range(level_num):
+		level_up()
+
+
+func level_up()->void:
+	high_cooldown += stat_dist["cooldown"]
+	print("Before Cooldown: " + str(high_cooldown))
+	pierce += stat_dist["pierce"]
+	value += stat_dist["value"]
+	cost += stat_dist["cost"]
+	wait_time += stat_dist["wait_time"]
 	
-	
-func _on_timer_timeout() -> void:
-	time += %Timer.wait_time
+	level += 1
+	if(level%10 == 0):
+		increase_stage()
+	set_cooldown()
+	print("Caster Control" + str(caster.control))
+	print("After Cooldown: " + str(cooldown))
+
+func increase_stage():
+	var multiplier: int = (level/10+1)
+	high_cooldown*=multiplier
+	wait_time *= multiplier
+	value *= multiplier
+	cost *= multiplier
+	pierce *= multiplier
+	for key in stat_dist.keys():
+		stat_dist[key] *= multiplier

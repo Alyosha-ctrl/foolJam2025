@@ -39,6 +39,7 @@ scale = Vector2(0.8, 0.772)
 polygon = PackedVector2Array(0, -110, 47, -93, 73, -50, 64, -1, 27, 29, -25, 30, -63, -1, -73, -50, -47, -94)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_onrkg")
 debug_color = Color(0.405622, 0.466561, 1, 0.42)
 
@@ -46,6 +47,7 @@ debug_color = Color(0.405622, 0.466561, 1, 0.42)
 unique_name_in_owner = true
 
 [node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
+unique_name_in_owner = true
 collision_layer = 2
 
 [node name="hurt_box" type="Area2D" parent="."]

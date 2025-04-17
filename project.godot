@@ -94,6 +94,11 @@ project/assembly_name="Getting started with Godot 4"
 
 enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
 
+[global_group]
+
+enemies=""
+technique="Technique objects that perform actions"
+
 [input]
 
 move_left={
@@ -132,6 +137,7 @@ technique1={
 
 [physics]
 
+common/physics_ticks_per_second=30
 2d/solver/solver_iterations=9
 
 [rendering]

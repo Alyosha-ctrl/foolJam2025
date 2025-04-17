@@ -16,13 +16,12 @@ var max_qi : float = power*25
 var qi : float = max_qi*1
 var time: float = 0.0
 const speed_multiplier: float = 300
-@onready var player = get_node("/root/Game/Player")
-@onready var game = get_node("/root/Game")
-@onready var cooldown = %Timer.wait_time
+@onready var player := get_node("/root/Game/Player")
+@onready var cooldown : float = %Timer.wait_time
 	
 
 func _physics_process(delta: float) -> void:
-	var direction = global_position.direction_to(player.global_position)
+	var direction := global_position.direction_to(player.global_position)
 	velocity = direction*(speed_multiplier*log((grace/10)+2))
 	move_and_slide()
 	
@@ -37,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage, element, pierce):
 	#Later take in type to alter damage as well as defense
-	var defense_local = defense-pierce
+	var defense_local : float = defense-pierce
 	if(defense_local <= 0):
 		defense_local = 1
 	damage -= defense_local
@@ -93,6 +92,7 @@ func increase_stage():
 	#Multiplies the new stat distribution
 	stat_dist*=(level/10) + 1
 	
+#MAYBE MAKE THIS MORE EFFICIENT
 func set_level(level_num : int):
 	for i in range(level_num):
 		level_up()

@@ -91,6 +91,7 @@ func level_up():
 	level += 1
 	if(level%10 == 0):
 		increase_stage()
+	%Gun.level_up()
 	print("Level Up")
 	print("Level: " + str(level))
 		

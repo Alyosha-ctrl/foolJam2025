@@ -1,17 +1,14 @@
 extends Node2D
 
-var time = 0.0
-var stat_mult = 1
-var player_level = 1
-var overall_stats = 0
-var level_time = 11
-
+var time := 0.0
+var level_time := 6
+var max_entities := 500
 var already_done : bool = false
 
 func _ready() -> void:
 	get_tree().paused = false
-	for i in range(5):
-		spawn_mob()
+	#for i in range(5):
+		#spawn_mob()
 
 func spawn_mob():
 	#In the future this will also create the color of the mob
@@ -19,20 +16,20 @@ func spawn_mob():
 	var spawn_type = ["swarm", "mob", "boss", "swarm", "swarm", "mob"]
 	spawn_type = spawn_type[randi_range(0,len(spawn_type)-1)]
 	if(spawn_type == "mob"):
-		var new_mob = preload("res://mob.tscn").instantiate()
+		var new_mob := preload("res://mob.tscn").instantiate()
 		new_mob.set_level(%Player.level-2)
 		#Randomly create's the mob on a point along the path
 		%PathFollow2D.progress_ratio = randf()
 		new_mob.global_position = %PathFollow2D.global_position
 		add_child(new_mob)
 	elif(spawn_type == "swarm"):
-		var new_mob = preload("res://mob.tscn").instantiate()
+		var new_mob := preload("res://mob.tscn").instantiate()
 		new_mob.set_level(%Player.level-3)
 		new_mob.scale = Vector2(.75, .75)
-		var new_mob1 = preload("res://mob.tscn").instantiate()
+		var new_mob1 := preload("res://mob.tscn").instantiate()
 		new_mob1.set_level(%Player.level-2)
 		new_mob1.scale = Vector2(.75, .75)
-		var new_mob2 = preload("res://mob.tscn").instantiate()
+		var new_mob2 := preload("res://mob.tscn").instantiate()
 		new_mob2.set_level(%Player.level-2)
 		new_mob2.scale = Vector2(.75, .75)
 		#Randomly create's the mob on a point along the path
@@ -46,7 +43,7 @@ func spawn_mob():
 		add_child(new_mob1)
 		add_child(new_mob2)
 	elif(spawn_type == "boss"):
-		var new_mob = preload("res://mob.tscn").instantiate()
+		var new_mob := preload("res://mob.tscn").instantiate()
 		new_mob.set_level(%Player.level-1)
 		new_mob.scale = Vector2(1.25, 1.25)
 		#Randomly create's the mob on a point along the path
@@ -72,13 +69,12 @@ func level_up():
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	var max_entities = 500
 	level_up()
 	if(!(len(get_children()) > max_entities)):
 		spawn_mob()
 		spawn_object()
 	else:
-		print("More than " + str(max_entities) + " entities")
+		pass
 	time+=($Timer.wait_time)
 	
 	

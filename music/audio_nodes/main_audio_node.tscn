@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cebkk3xvtraj4"]
+
+[ext_resource type="Script" uid="uid://dkqedk71gm3eb" path="res://music/audio_scripts/main_audio.gd" id="1_cv27k"]
+[ext_resource type="PackedScene" uid="uid://bi1mhpvm7exmh" path="res://music/audio_nodes/stage_audio_node.tscn" id="2_1xv6o"]
+[ext_resource type="PackedScene" uid="uid://i2p61tyn5ffy" path="res://music/audio_nodes/level_audio_node.tscn" id="2_wpnni"]
+
+[node name="MainAudioNode" type="Node2D" node_paths=PackedStringArray("level_node", "stage_node")]
+script = ExtResource("1_cv27k")
+level_node = NodePath("LevelAudioNode")
+stage_node = NodePath("StageAudioNode")
+
+[node name="StageAudioNode" parent="." instance=ExtResource("2_1xv6o")]
+
+[node name="LevelAudioNode" parent="." instance=ExtResource("2_wpnni")]

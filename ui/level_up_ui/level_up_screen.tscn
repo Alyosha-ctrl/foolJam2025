@@ -1,0 +1,241 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs0ndmavguhjt"]
+
+[ext_resource type="Script" uid="uid://bhahthbrxvo8b" path="res://ui/level_up_ui/level_up_screen.gd" id="1_nsbu3"]
+[ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="2_7l22l"]
+
+[node name="LevelUpScreen" type="Control" node_paths=PackedStringArray("stage_up_container", "stage_up_screen", "lv_old_label", "lv_new_label", "str_old_label", "str_new_label", "gra_old_label", "gra_new_label", "pow_old_label", "pow_new_label", "con_old_label", "con_new_label", "def_old_label", "def_new_label", "hp_old_label", "hp_new_label", "qi_old_label", "qi_new_label")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nsbu3")
+stage_up_container = NodePath("Panel/VBoxContainer/HBoxContainer/StageUpContainer")
+stage_up_screen = NodePath("Panel/VBoxContainer/HBoxContainer/StageUpContainer/StageUpScreen")
+lv_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/OldLV")
+lv_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/NewLV")
+str_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/STRHBox/StrengthOld")
+str_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/STRHBox/StrengthNew")
+gra_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/GRAHBox/GraceOld")
+gra_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/GRAHBox/GraceNew")
+pow_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/POWHBox/PowerOld")
+pow_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/POWHBox/PowerNew")
+con_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/CONHBox/ControlOld")
+con_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/CONHBox/ControlNew")
+def_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBox/DefenseOld")
+def_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBox/DefenseNew")
+hp_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox/HPOld")
+hp_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox/HPNew")
+qi_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox/QiOld")
+qi_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox/QiNew")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LVHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/LVHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Level Up!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="OldLV" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "LV1 -> "
+
+[node name="NewLV" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "LV2"
+
+[node name="STRHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Strength" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/STRHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Strength: "
+
+[node name="StrengthOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/STRHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="StrengthNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/STRHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="GRAHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Grace" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/GRAHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Grace: "
+
+[node name="GraceOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/GRAHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="GraceNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/GRAHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="POWHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Power" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/POWHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Power:  "
+
+[node name="PowerOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/POWHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="PowerNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/POWHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="CONHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Control" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/CONHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Control:  "
+
+[node name="ControlOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/CONHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="ControlNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/CONHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="DEFHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Defense" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Defense: "
+
+[node name="DefenseOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="DefenseNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="HPHbox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HP" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Health:  "
+
+[node name="HPOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="HPNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="QIHbox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Qi" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Qi: "
+
+[node name="QiOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="QiNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="StageUpContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="StageUpScreen" parent="Panel/VBoxContainer/HBoxContainer/StageUpContainer" instance=ExtResource("2_7l22l")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 35
+
+[node name="ContinueButton" type="Button" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Continue"
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

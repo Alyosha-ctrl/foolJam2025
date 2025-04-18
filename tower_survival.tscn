@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4msthu2puely"]
+[gd_scene load_steps=8 format=3 uid="uid://c4msthu2puely"]
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
+[ext_resource type="PackedScene" uid="uid://bs0ndmavguhjt" path="res://ui/level_up_ui/level_up_screen.tscn" id="2_od0vt"]
+[ext_resource type="PackedScene" uid="uid://cebkk3xvtraj4" path="res://music/audio_nodes/main_audio_node.tscn" id="2_on220"]
 [ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
+[ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="5_tqqor"]
 
 [sub_resource type="Curve2D" id="Curve2D_od0vt"]
 _data = {
@@ -14,6 +17,8 @@ point_count = 5
 y_sort_enabled = true
 script = ExtResource("1_wghd7")
 
+[node name="MainAudioNode" parent="." instance=ExtResource("2_on220")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -22,12 +27,15 @@ offset_left = -9.0
 offset_top = -8.0
 offset_right = 1925.0
 offset_bottom = 1085.0
+color = Color(0.366595, 0.366595, 0.366595, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_bauih")]
+[node name="Player" parent="." node_paths=PackedStringArray("lvl_up_screen") instance=ExtResource("1_bauih")]
 unique_name_in_owner = true
 position = Vector2(830, 519)
+lvl_up_screen = NodePath("../level_up_screen/LevelUpScreen")
 
 [node name="Path2D" type="Path2D" parent="Player"]
+unique_name_in_owner = true
 position = Vector2(-830, -519)
 curve = SubResource("Curve2D_od0vt")
 
@@ -92,11 +100,26 @@ position = Vector2(1828, 982)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.3
+wait_time = 0.25
 autostart = true
+
+[node name="stage_up_screen" type="CanvasLayer" parent="."]
+
+[node name="StageUpScreen" parent="stage_up_screen" node_paths=PackedStringArray("primary_audio_node") instance=ExtResource("5_tqqor")]
+visible = false
+primary_audio_node = NodePath("../../MainAudioNode")
+
+[node name="level_up_screen" type="CanvasLayer" parent="."]
+
+[node name="LevelUpScreen" parent="level_up_screen" node_paths=PackedStringArray("player", "primary_audio_node") instance=ExtResource("2_od0vt")]
+visible = false
+player = NodePath("../../Player")
+primary_audio_node = NodePath("../../MainAudioNode")
 
 [node name="game_over_screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
+process_priority = 1
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="game_over_screen"]
@@ -123,6 +146,65 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "Game Over"
 
+[node name="credits" type="Label" parent="game_over_screen/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.184
+anchor_top = 0.076
+anchor_right = 0.184
+anchor_bottom = 0.076
+offset_left = -344.28
+offset_top = -78.08
+offset_right = 198.72
+offset_bottom = 58.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
+[node name="Label3" type="Label" parent="game_over_screen/ColorRect/credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.5
+offset_top = -16.5
+offset_right = 1117.5
+offset_bottom = 1016.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Director
+Alexey “Azriel” Berezhnoy
+
+Game Programmers
+Alexey “Azriel” Berezhnoy
+Joshua Christopher Jose Torres-Hopkins
+
+Sound Designer
+Joshua Christopher Jose Torres-Hopkins
+
+Code Advisors
+Zionna Brown, various help in wrangling Godot
+Jackie Luc, increased speed, altering camera zoom
+Joshua Christopher Jose Torres-Hopkins, performance help
+
+Playtesters
+Alora Cochrane
+Zionna Brown
+Joshua Christopher Jose Torres-Hopkins
+Tomas ___
+Emanuel ___
+Alexey “Azriel” Berezhnoy
+
+Intenet Obtained Code
+GDQuest, for \"Your First 2D GAME From Zero in Godot 4 **Vampire Survivor Style**\"
+Tutorial, and source code, used, and modified under the CC by 4.0 license, https://creativecommons.org/licenses/by/4.0/
+Loipesnas for \"Smoother look_at() in 2d\"
+"
+
 [node name="Control" type="Control" parent="game_over_screen"]
 layout_mode = 3
 anchors_preset = 0
@@ -147,6 +229,7 @@ theme_override_colors/icon_normal_color = Color(0, 0.545098, 0, 1)
 theme_override_colors/font_color = Color(0, 0.984314, 0, 1)
 text = "Restart"
 
+[connection signal="changed_speed" from="Player" to="." method="_on_player_changed_speed"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="button_down" from="game_over_screen/Control/restart_button" to="." method="_on_restart_button_button_down"]

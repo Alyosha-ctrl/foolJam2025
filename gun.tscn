@@ -40,7 +40,10 @@ texture = ExtResource("1_vk1bi")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.025
+wait_time = 0.05
 autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(153, -31, 215, -2, 152, 33)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

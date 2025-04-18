@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://i2p61tyn5ffy"]
+
+[ext_resource type="Script" uid="uid://31x6bfk1uoym" path="res://music/audio_scripts/level_audio_script.gd" id="1_gxs1o"]
+[ext_resource type="AudioStream" uid="uid://d11ai0n5glne3" path="res://music/audio_files/level_up/LV1.wav" id="2_wuvvv"]
+[ext_resource type="AudioStream" uid="uid://bmo2wwiqycpfo" path="res://music/audio_files/level_up/LV2.wav" id="3_a2lkh"]
+[ext_resource type="AudioStream" uid="uid://dq051gbqmdqjv" path="res://music/audio_files/level_up/LV3.wav" id="4_qgb0w"]
+[ext_resource type="AudioStream" uid="uid://bts5ajftqlkwk" path="res://music/audio_files/level_up/LV4.wav" id="5_ye2q2"]
+[ext_resource type="AudioStream" uid="uid://c0wwk3h1m86kq" path="res://music/audio_files/level_up/LV5.wav" id="6_vfdvu"]
+[ext_resource type="AudioStream" uid="uid://b7p2kn2dtd85i" path="res://music/audio_files/level_up/LV6.wav" id="7_qml7m"]
+
+[node name="LevelAudioNode" type="Node2D" node_paths=PackedStringArray("lv1", "lv2", "lv3", "lv4", "lv5", "lv6")]
+script = ExtResource("1_gxs1o")
+lv1 = NodePath("Lv1")
+lv2 = NodePath("Lv2")
+lv3 = NodePath("Lv3")
+lv4 = NodePath("Lv4")
+lv5 = NodePath("Lv5")
+lv6 = NodePath("Lv6")
+
+[node name="Lv1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wuvvv")
+
+[node name="Lv2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a2lkh")
+
+[node name="Lv3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qgb0w")
+
+[node name="Lv4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ye2q2")
+
+[node name="Lv5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vfdvu")
+
+[node name="Lv6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qml7m")

@@ -16,10 +16,11 @@ var cost : float = 0
 var value : float = 5.0
 var pierce : float = 1
 var wait_time : float = cooldown
-var stat_dist : Dictionary = {"cooldown": 1, "cost":5, "value":5, "pierce":1, "wait_time":.5}
-	
+var stat_dist : Dictionary = {"cooldown": .5, "cost":5, "value":5, "pierce":1, "wait_time":.5}
+var original:= .5
+
 func set_cooldown():
-	cooldown = high_cooldown-(caster.control*stat_dist["cooldown"]/9.9)
+	cooldown = original - log(caster.control)*(original/10)
 	
 	
 func _ready() -> void:

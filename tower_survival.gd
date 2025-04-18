@@ -55,6 +55,8 @@ func _on_player_death() -> void:
 	
 func _on_restart_button_button_down() -> void:
 	%game_over_screen.visible = false
+	get_tree().paused = false
+	$level_up_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().reload_current_scene()
 	
 func _on_player_changed_speed() -> void:

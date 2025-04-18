@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@export var lvl_up_screen: LevelUpScreen
 
 var actor_type : String = "player"
 
@@ -68,6 +69,8 @@ func take_damage(damage, element, pierce):
 		smoke.global_position = global_position
 		death.emit()
 		
+		lvl_up_screen.process_mode = Node.PROCESS_MODE_DISABLED
+		get_tree().paused = true
 func multiply_stats(statMult):
 	strength*=statMult
 	grace*=statMult
@@ -95,10 +98,17 @@ func add_stats(statMult):
 	%ProgressBar.value = 100*(health/max_health)
 	
 func level_up():
+	lvl_up_screen.player_val_to_old_stats()
+	
 	add_stats(stat_dist)
 	level += 1
 	if(level%10 == 0):
 		increase_stage()
+	else:
+		lvl_up_screen.show_lv_screen()
+	
+	lvl_up_screen.player_val_to_new_stats()
+	
 	print("Level Up")
 	print("Level: " + str(level))
 		
@@ -106,6 +116,9 @@ func increase_stage():
 	multiply_stats((level/10) + 1)
 	#Multiplies the new stat distribution
 	stat_dist*=(level/10) + 1
+	
+	lvl_up_screen.show_stage_screen()
+	
 	print("Stage Increased")
 		
 	

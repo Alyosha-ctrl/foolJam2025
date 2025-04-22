@@ -11,12 +11,11 @@ var time : float = 0.0
 
 var level:int=1
 var cooldown : float = .5
-var high_cooldown:float = .5
 var cost : float = 0
 var value : float = 5.0
 var pierce : float = 1
 var wait_time : float = cooldown
-var stat_dist : Dictionary = {"cooldown": .5, "cost":5, "value":5, "pierce":1, "wait_time":.5}
+var stat_dist : Dictionary = {"cost":5, "value":5, "pierce":1, "wait_time":.5}
 var original:= .5
 
 func set_cooldown():
@@ -76,8 +75,6 @@ func set_level(level_num : int)->void:
 
 
 func level_up()->void:
-	high_cooldown += stat_dist["cooldown"]
-	print("Before Cooldown: " + str(high_cooldown))
 	pierce += stat_dist["pierce"]
 	value += stat_dist["value"]
 	cost += stat_dist["cost"]
@@ -87,12 +84,9 @@ func level_up()->void:
 	if(level%10 == 0):
 		increase_stage()
 	set_cooldown()
-	print("Caster Control" + str(caster.control))
-	print("After Cooldown: " + str(cooldown))
 
 func increase_stage():
 	var multiplier: int = (level/10+1)
-	high_cooldown*=multiplier
 	wait_time *= multiplier
 	value *= multiplier
 	cost *= multiplier

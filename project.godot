@@ -96,8 +96,8 @@ enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
 
 [global_group]
 
-enemies=""
 technique="Technique objects that perform actions"
+entities=""
 
 [input]
 

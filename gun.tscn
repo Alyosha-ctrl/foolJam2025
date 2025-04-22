@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://buoqd270n7r8v"]
+[gd_scene load_steps=3 format=3 uid="uid://buoqd270n7r8v"]
 
 [ext_resource type="Script" uid="uid://4660bixpeler" path="res://gun.gd" id="1_dk5gl"]
-[ext_resource type="Texture2D" uid="uid://cswb5do8rrj7q" path="res://pistol/pistol.png" id="1_vk1bi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dk5gl"]
 radius = 525.009
@@ -12,13 +11,14 @@ collision_mask = 2
 script = ExtResource("1_dk5gl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(210, 0)
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_dk5gl")
 
 [node name="weapon_pivot" type="Marker2D" parent="."]
+position = Vector2(1.89999, 0.200001)
 
 [node name="Polygon2D2" type="Polygon2D" parent="weapon_pivot"]
-position = Vector2(-23, 3)
+position = Vector2(-177, 3)
 scale = Vector2(1.12727, 1.19231)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(156, -28, 156, 24, 211, -3)
@@ -32,11 +32,3 @@ polygon = PackedVector2Array(156, -28, 156, 24, 211, -3)
 unique_name_in_owner = true
 position = Vector2(206.694, -4.76837e-07)
 scale = Vector2(0.887097, 0.83871)
-
-[node name="Pistol" type="Sprite2D" parent="weapon_pivot"]
-visible = false
-position = Vector2(188, 6)
-texture = ExtResource("1_vk1bi")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(153, -31, 215, -2, 152, 33)

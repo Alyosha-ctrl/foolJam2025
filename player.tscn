@@ -48,6 +48,8 @@ unique_name_in_owner = true
 
 [node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
 unique_name_in_owner = true
+position = Vector2(120, 20)
+rotation = 0.127409
 collision_layer = 2
 
 [node name="hurt_box" type="Area2D" parent="."]

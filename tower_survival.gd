@@ -74,8 +74,12 @@ func _on_timer_timeout() -> void:
 		spawn_mob()
 		spawn_object()
 	else:
-		pass
+		kill_most_distant_entity()
 	time+=($Timer.wait_time)
+	
+func kill_most_distant_entity()->void:
+	print("Killed enemy")
+	get_tree().get_nodes_in_group("entities").front().queue_free()
 	
 	
 

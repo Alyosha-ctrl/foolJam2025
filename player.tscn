@@ -50,6 +50,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(120, 20)
 rotation = 0.127409
+scale = Vector2(1, 1)
 collision_layer = 2
 
 [node name="hurt_box" type="Area2D" parent="."]
@@ -83,4 +84,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_i3pqv")
 value = 100.0
 show_percentage = false
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="changed_speed" from="." to="." method="_on_changed_speed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

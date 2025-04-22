@@ -16,6 +16,7 @@ var max_health : float = strength*25
 var health : float = max_health*1
 var max_qi : float = power*25
 var qi : float = max_qi*1
+var qi_regeneration : float = control*9
 const speed_multiplier = 600
 var speed : float = calculate_speed()
 var zoom_cap : float = .36
@@ -33,6 +34,12 @@ func set_speed(new_speed):
 	
 func set_qi_bar() -> void:
 	%qi_bar.value = 100*(qi/max_qi)
+	
+func set_health_bar() -> void:
+	%ProgressBar.value = 100*(health/max_health)
+	
+func set_qi_regeneration() -> void:
+	qi_regeneration = control*9
 	
 func _ready() -> void:
 	set_speed(speed)
@@ -73,8 +80,10 @@ func multiply_stats(statMult):
 	health = max_health*1
 	max_qi = power*25
 	qi = max_qi*1
+	set_qi_regeneration()
 	set_speed(calculate_speed())
 	%ProgressBar.value = 100*(health/max_health)
+	set_qi_bar()
 	
 func add_stats(statMult):
 	strength+=statMult
@@ -105,3 +114,14 @@ func increase_stage():
 	print("Stage Increased")
 		
 	
+
+
+func _on_timer_timeout() -> void:
+	#Once per second regenerate qi, 
+	#apply all buffs, and apply all debuffs
+	qi += qi_regeneration
+	
+	#Go through the status list(currently non existant)
+	
+	set_qi_bar()
+	set_health_bar()

@@ -15,15 +15,23 @@ var cost : float = 1
 var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1
-var wait_time : float = cooldown
-var stat_dist : Dictionary = {"cost":5, "value":5, "pierce":1, "wait_time":.5}
+var wait_time : float = cooldown/2
+var stat_dist : Dictionary = {"cost":1, "value":5, "pierce":1}
 var original:= .5
 
 func set_cooldown():
 	cooldown = original - log(caster.control)*(original/10)
 	
+func set_wait_time() ->void :
+	wait_time = (original - log(caster.grace)*(original/10))/2
+	
 func set_cost():
 	cost = high_cost - log(caster.defense)*(stat_dist["cost"]/10)
+	print("True_Cost: " + str(high_cost))
+	print("End Cost: " + str(cost))
+	print("Total Qi: " + str(caster.power*25))
+	print("Defense: " + str(caster.defense))
+	print("Qi Percentage Used End Cost: " + str((caster.power*25)/cost))
 	
 func _ready() -> void:
 	set_cooldown()
@@ -72,8 +80,11 @@ func remove_qi() -> bool:
 	
 	
 func shoot():
-	remove_qi()
+	if(!remove_qi()):
+		print("Not Enough Qi")
+		return;
 	const BULLET = preload("res://bullet.tscn")
+	await get_tree().create_timer(wait_time).timeout
 	var new_bullet = BULLET.instantiate()
 	new_bullet.set_value(value_adder())
 	new_bullet.technique = self
@@ -82,6 +93,7 @@ func shoot():
 	new_bullet.global_position = $%shooting_point.global_position
 	#Replace with the rotation aimed at the nearest enemy
 	new_bullet.global_rotation = $%shooting_point.global_rotation
+	
 	$%shooting_point.add_child(new_bullet)
 
 #MAYBE MAKE THIS MORE EFFICIENT
@@ -94,12 +106,13 @@ func level_up()->void:
 	pierce += stat_dist["pierce"]
 	value += stat_dist["value"]
 	high_cost += stat_dist["cost"]
-	wait_time += stat_dist["wait_time"]
 	
 	level += 1
 	if(level%10 == 0):
 		increase_stage()
 	set_cooldown()
+	set_cost()
+	set_wait_time()
 
 func increase_stage():
 	var multiplier: int = (level/10+1)

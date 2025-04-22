@@ -31,6 +31,9 @@ func set_speed(new_speed):
 	%Camera2D.zoom = Vector2(1,1)*new_zoom
 	#emit_signal("changed_speed")
 	
+func set_qi_bar() -> void:
+	%qi_bar.value = 100*(qi/max_qi)
+	
 func _ready() -> void:
 	set_speed(speed)
 

@@ -11,7 +11,8 @@ var time : float = 0.0
 
 var level:int=1
 var cooldown : float = .5
-var cost : float = 0
+var cost : float = 1
+var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1
 var wait_time : float = cooldown
@@ -21,6 +22,8 @@ var original:= .5
 func set_cooldown():
 	cooldown = original - log(caster.control)*(original/10)
 	
+func set_cost():
+	cost = high_cost - log(caster.defense)*(stat_dist["cost"]/10)
 	
 func _ready() -> void:
 	set_cooldown()
@@ -56,7 +59,20 @@ func value_adder():
 		adder += caster.control + caster.power*.5
 	return value + adder
 	
+func remove_qi() -> bool:
+	var end_qi : float = caster.qi-cost
+	#MAKE A NOTIFICATION/sound IN THE FUTURE TO SHOW NO QI
+	if(end_qi <= 0.0):
+		caster.qi = 0
+		caster.set_qi_bar()
+		return false
+	caster.qi = end_qi
+	caster.set_qi_bar()
+	return true
+	
+	
 func shoot():
+	remove_qi()
 	const BULLET = preload("res://bullet.tscn")
 	var new_bullet = BULLET.instantiate()
 	new_bullet.set_value(value_adder())
@@ -77,7 +93,7 @@ func set_level(level_num : int)->void:
 func level_up()->void:
 	pierce += stat_dist["pierce"]
 	value += stat_dist["value"]
-	cost += stat_dist["cost"]
+	high_cost += stat_dist["cost"]
 	wait_time += stat_dist["wait_time"]
 	
 	level += 1
@@ -89,7 +105,7 @@ func increase_stage():
 	var multiplier: int = (level/10+1)
 	wait_time *= multiplier
 	value *= multiplier
-	cost *= multiplier
+	high_cost *= multiplier
 	pierce *= multiplier
 	for key in stat_dist.keys():
 		stat_dist[key] *= multiplier

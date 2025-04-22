@@ -11,7 +11,7 @@ var time : float = 0.0
 
 var level:int=1
 var cooldown : float = .5
-var cost : float = 1
+var cost : float = 10
 var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1
@@ -72,16 +72,17 @@ func remove_qi() -> bool:
 	#MAKE A NOTIFICATION/sound IN THE FUTURE TO SHOW NO QI
 	if(end_qi <= 0.0):
 		caster.qi = 0
-		caster.set_qi_bar()
+		if(caster.has_method("set_qi_bar")):
+			caster.set_qi_bar()
 		return false
 	caster.qi = end_qi
-	caster.set_qi_bar()
+	if(caster.has_method("set_qi_bar")):
+		caster.set_qi_bar()
 	return true
 	
 	
 func shoot():
 	if(!remove_qi()):
-		print("Not Enough Qi")
 		return;
 	const BULLET = preload("res://bullet.tscn")
 	await get_tree().create_timer(wait_time).timeout

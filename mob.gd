@@ -14,6 +14,7 @@ var max_health : float = strength*15
 var health : float = max_health*1
 var max_qi : float = power*25
 var qi : float = max_qi*1
+var qi_regeneration : float = control*9
 var time: float = 0.0
 const speed_multiplier: float = 300
 @onready var player := get_node("/root/Game/Player")
@@ -58,6 +59,8 @@ func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
 	time+=($Timer.wait_time)
+	if(time == 1):
+		qi += qi_regeneration
 	
 func multiply_stats(statMult):
 	strength*=statMult

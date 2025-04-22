@@ -74,7 +74,11 @@ func _on_timer_timeout() -> void:
 		spawn_mob()
 		spawn_object()
 	else:
-		kill_most_distant_entity()
+		if(len(get_children()) > max_entities*2):
+			for i in (range(len(get_children()) - max_entities)):
+				kill_most_distant_entity()
+		else:
+			kill_most_distant_entity()
 	time+=($Timer.wait_time)
 	
 func kill_most_distant_entity()->void:

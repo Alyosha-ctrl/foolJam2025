@@ -11,7 +11,7 @@ var time : float = 0.0
 
 var level:int=1
 var cooldown : float = .5
-var cost : float = 10
+var cost : float = 1
 var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1

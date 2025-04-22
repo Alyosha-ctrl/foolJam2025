@@ -48,8 +48,8 @@ func take_damage(damage, element, pierce):
 		#Hides death.
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate()
+		smoke.global_position = self.global_position
 		get_parent().add_child(smoke)
-		smoke.global_position = global_position
 		queue_free()
 		
 	

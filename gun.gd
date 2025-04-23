@@ -36,7 +36,7 @@ func set_size():
 	size = original_size * (1+log(caster.power)*original_size/1000)
 	
 func get_scale_multiplier():
-	return (1+((log(caster.power)/2.5)*(original_size/1000)))
+	return (1+((log(caster.power)/2.3)*(original_size/1000)))
 
 func set_cooldown():
 	cooldown = original - log(caster.control)*(original/10)
@@ -112,6 +112,7 @@ func shoot():
 	new_bullet.set_value(value_adder())
 	new_bullet.technique = self
 	new_bullet.technique_size = size
+	new_bullet.speed = size
 	new_bullet.pierce = pierce+(caster.strength/3)
 	new_bullet.element = element
 	new_bullet.global_position = $%shooting_point.global_position
@@ -129,6 +130,7 @@ func wave():
 	new_bullet.set_value(value_adder())
 	new_bullet.technique = self
 	new_bullet.technique_size = size
+	new_bullet.speed = size*2
 	new_bullet.pierce = pierce+(caster.strength/3)
 	new_bullet.element = element
 	new_bullet.scale = Vector2(1,1)*get_scale_multiplier()

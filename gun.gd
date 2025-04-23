@@ -5,7 +5,7 @@ extends Area2D
 var type : String = "ranged"
 var element : String = "creation"
 var modifier : String = "auto_aim"
-var action : String = "shoot"
+var action : String = "wave"
 
 var time : float = 0.0
 
@@ -16,8 +16,27 @@ var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1
 var wait_time : float = cooldown/2
+var original_size := get_size_from_action()
+var size := original_size
+
 var stat_dist : Dictionary = {"cost":1, "value":5, "pierce":1}
 var original:= .5
+
+func get_size_from_action() -> float:
+	if(action == "shoot"):
+		return 1000.0
+	elif(action == "wave"):
+		return 500.0
+	elif(action == "blast"):
+		return 1500.0
+	else:
+		return 1000.0
+		
+func set_size():
+	size = original_size * (1+log(caster.power)*original_size/1000)
+	
+func get_scale_multiplier():
+	return (1+((log(caster.power)/2.5)*(original_size/1000)))
 
 func set_cooldown():
 	cooldown = original - log(caster.control)*(original/10)
@@ -44,7 +63,10 @@ func _physics_process(delta: float) -> void:
 			var target = enemies_in_range.front()
 			look_at(target.global_position)
 		if(time >= cooldown):
-			shoot()
+			if(action == "shoot"):
+				shoot()
+			elif(action == "wave"):
+				wave()
 			time = 0.0
 	elif (type == "ranged" and caster.actor_type == "mob"):
 		#var entities_in_range = get_overlapping_bodies()
@@ -89,8 +111,28 @@ func shoot():
 	var new_bullet = BULLET.instantiate()
 	new_bullet.set_value(value_adder())
 	new_bullet.technique = self
+	new_bullet.technique_size = size
 	new_bullet.pierce = pierce+(caster.strength/3)
 	new_bullet.element = element
+	new_bullet.global_position = $%shooting_point.global_position
+	#Replace with the rotation aimed at the nearest enemy
+	new_bullet.global_rotation = $%shooting_point.global_rotation
+	
+	$%shooting_point.add_child(new_bullet)
+	
+func wave():
+	if(!remove_qi()):
+		return;
+	const WAVE = preload("res://wave.tscn")
+	await get_tree().create_timer(wait_time).timeout
+	var new_bullet = WAVE.instantiate()
+	new_bullet.set_value(value_adder())
+	new_bullet.technique = self
+	new_bullet.technique_size = size
+	new_bullet.pierce = pierce+(caster.strength/3)
+	new_bullet.element = element
+	new_bullet.scale = Vector2(1,1)*get_scale_multiplier()
+	print("Wave Size: " + str(new_bullet.scale))
 	new_bullet.global_position = $%shooting_point.global_position
 	#Replace with the rotation aimed at the nearest enemy
 	new_bullet.global_rotation = $%shooting_point.global_rotation
@@ -114,6 +156,7 @@ func level_up()->void:
 	set_cooldown()
 	set_cost()
 	set_wait_time()
+	set_size()
 
 func increase_stage():
 	var multiplier: int = (level/10+1)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5jl2cygbnsxr"]
+
+[ext_resource type="Script" uid="uid://bhdn2j5xk8tvv" path="res://wave.gd" id="1_sj2kr"]
+[ext_resource type="Texture2D" uid="uid://dftkbqwsfd68r" path="res://pistol/projectile.png" id="2_j10k6"]
+
+[node name="Wave" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_sj2kr")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(1.09677, 1.16667)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-12.7648, -56.5713, -12.7648, 63.4284, 18, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(1.82354, 0.85714)
+scale = Vector2(0.630258, 0.845238)
+polygon = PackedVector2Array(-20.2532, -58.8167, -18.8066, 61.859, 18.8066, 0)
+
+[node name="Projectile" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-11, -1)
+texture = ExtResource("2_j10k6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-14, -69, 19, 0, -14, 76)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

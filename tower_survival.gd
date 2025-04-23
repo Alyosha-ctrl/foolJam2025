@@ -1,7 +1,7 @@
 extends Node2D
 
 var time := 0.0
-var level_time := 6
+var level_time := 4
 var max_entities := 500
 var already_done : bool = false
 

@@ -48,9 +48,8 @@ unique_name_in_owner = true
 
 [node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
 unique_name_in_owner = true
-position = Vector2(120, 20)
+position = Vector2(1.19209e-07, -1.19209e-07)
 rotation = 0.127409
-scale = Vector2(1, 1)
 collision_layer = 2
 
 [node name="hurt_box" type="Area2D" parent="."]
@@ -86,6 +85,44 @@ show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="tech_position9" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-121, 25)
+rotation = 0.127409
+scale = Vector2(1, 1)
+
+[node name="tech_position8" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(123, 23)
+
+[node name="tech_position1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(89, 83)
+
+[node name="tech_position2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 118)
+
+[node name="tech_position3" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-77, 90)
+
+[node name="tech_position4" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(104, -53)
+
+[node name="tech_position5" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(38, -95)
+
+[node name="tech_position6" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-45, -95)
+
+[node name="tech_position7" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-110, -51)
 
 [connection signal="changed_speed" from="." to="." method="_on_changed_speed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

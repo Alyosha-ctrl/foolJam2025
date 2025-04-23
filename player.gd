@@ -20,6 +20,7 @@ var qi_regeneration : float = control*9
 const speed_multiplier = 600
 var speed : float = calculate_speed()
 var zoom_cap : float = .36
+var num_of_tech : int = 1
 #var zoom_multiplier = 1/(speed/speed_multiplier)
 func calculate_speed():
 	return (speed_multiplier*log((grace/10)+2))
@@ -43,6 +44,7 @@ func set_qi_regeneration() -> void:
 	
 func _ready() -> void:
 	set_speed(speed)
+	%Gun.caster = self
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -112,6 +114,30 @@ func increase_stage():
 	#Multiplies the new stat distribution
 	stat_dist*=(level/10) + 1
 	print("Stage Increased")
+	const GUN = preload("res://gun.tscn")
+	var new_gun = GUN.instantiate()
+	new_gun.caster = self
+	new_gun.set_level(level)
+	if(num_of_tech == 1):
+		%tech_position1.add_child(new_gun)
+	elif(num_of_tech == 2):
+		%tech_position2.add_child(new_gun)
+	elif(num_of_tech == 3):
+		%tech_position3.add_child(new_gun)
+	elif(num_of_tech == 4):
+		%tech_position4.add_child(new_gun)
+	elif(num_of_tech == 5):
+		%tech_position5.add_child(new_gun)
+	elif(num_of_tech == 6):
+		%tech_position6.add_child(new_gun)
+	elif(num_of_tech == 7):
+		%tech_position7.add_child(new_gun)
+	elif(num_of_tech == 8):
+		%tech_position8.add_child(new_gun)
+	elif(num_of_tech == 9):
+		%tech_position9.add_child(new_gun)
+	num_of_tech +=1
+	
 		
 	
 

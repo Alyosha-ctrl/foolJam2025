@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@onready var caster = get_parent()
+var caster
 var type : String = "ranged"
 var element : String = "creation"
 var modifier : String = "auto_aim"
@@ -46,36 +46,29 @@ func set_wait_time() ->void :
 	
 func set_cost():
 	cost = high_cost - log(caster.defense)*(stat_dist["cost"]/10)
-	print("True_Cost: " + str(high_cost))
-	print("End Cost: " + str(cost))
-	print("Total Qi: " + str(caster.power*25))
-	print("Defense: " + str(caster.defense))
-	print("Qi Percentage Used End Cost: " + str((caster.power*25)/cost))
-	
-func _ready() -> void:
-	set_cooldown()
 
 func _physics_process(delta: float) -> void:
 	time+=delta
-	if(!caster.actor_type == "mob"):
-		var enemies_in_range = get_overlapping_bodies()
-		if(enemies_in_range.size() > 0):
-			var target = enemies_in_range.front()
-			look_at(target.global_position)
-		if(time >= cooldown):
-			if(action == "shoot"):
+	if(modifier == "auto_aim"):
+		if(!caster.actor_type == "mob"):
+			var enemies_in_range = get_overlapping_bodies()
+			if(enemies_in_range.size() > 0):
+				var target = enemies_in_range.front()
+				look_at(target.global_position)
+			if(time >= cooldown):
+				if(action == "shoot"):
+					shoot()
+				elif(action == "wave"):
+					wave()
+				time = 0.0
+		elif (type == "ranged" and caster.actor_type == "mob"):
+			#var entities_in_range = get_overlapping_bodies()
+			#look_at(caster.player.global_position)
+			var angle = (caster.player.global_position - self.global_position).angle()
+			self.global_rotation = lerp_angle(self.global_rotation, angle, delta*.5)
+			if(time >= cooldown):
 				shoot()
-			elif(action == "wave"):
-				wave()
-			time = 0.0
-	elif (type == "ranged" and caster.actor_type == "mob"):
-		#var entities_in_range = get_overlapping_bodies()
-		#look_at(caster.player.global_position)
-		var angle = (caster.player.global_position - self.global_position).angle()
-		self.global_rotation = lerp_angle(self.global_rotation, angle, delta*.5)
-		if(time >= cooldown):
-			shoot()
-			time = 0.0
+				time = 0.0
 		
 		
 func value_adder():
@@ -134,7 +127,6 @@ func wave():
 	new_bullet.pierce = pierce+(caster.strength/3)
 	new_bullet.element = element
 	new_bullet.scale = Vector2(1,1)*get_scale_multiplier()
-	print("Wave Size: " + str(new_bullet.scale))
 	new_bullet.global_position = $%shooting_point.global_position
 	#Replace with the rotation aimed at the nearest enemy
 	new_bullet.global_rotation = $%shooting_point.global_rotation

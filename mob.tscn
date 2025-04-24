@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cctamn8lk3gjj"]
+[gd_scene load_steps=5 format=3 uid="uid://cctamn8lk3gjj"]
 
 [ext_resource type="Script" uid="uid://tyhkc1p8gbp0" path="res://mob.gd" id="1_nokgg"]
+[ext_resource type="AudioStream" uid="uid://blvrytjmxkmq7" path="res://zapsplat_multimedia_game_sound_retro_thump_hit_92335.mp3" id="2_nokgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy6sc"]
 size = Vector2(83, 74)
@@ -64,6 +65,11 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(-7.6066, -38.1526)
 scale = Vector2(5.55, 5.45)
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_nokgg")
+volume_db = -2.971
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

@@ -50,6 +50,10 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction*speed
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("exit_game"):
+		get_tree().quit()
+	
 	var overlaps = %hurt_box.get_overlapping_bodies()
 	for entity in overlaps:
 		entity.take_damage(strength*delta, "bump", strength*2)

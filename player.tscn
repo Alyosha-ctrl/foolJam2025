@@ -90,7 +90,6 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(-121, 25)
 rotation = 0.127409
-scale = Vector2(1, 1)
 
 [node name="tech_position8" type="Marker2D" parent="."]
 unique_name_in_owner = true

@@ -88,6 +88,7 @@ func kill_most_distant_entity()->void:
 
 func _on_player_death() -> void:
 	%game_over_screen.visible = true
+	%AudioStreamPlayer.stream_paused = true
 	if(!already_done):
 		%game_over_label.text = %game_over_label.text + "Level Reached " + str(%Player.level)
 		already_done = true

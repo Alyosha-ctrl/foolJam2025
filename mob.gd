@@ -44,6 +44,10 @@ func take_damage(damage, element, pierce):
 	if(damage <= 0):
 		damage = 1
 	health-=damage
+	
+	if(!element == "bump"):
+		%damage_sound.pitch_scale = randf_range(.8,1.2)
+		%damage_sound.play()
 	if(health <= 0):
 		#Hides death.
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")

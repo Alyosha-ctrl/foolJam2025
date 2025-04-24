@@ -74,16 +74,17 @@ Settings/Show_Tooltips=true
 
 [application]
 
-config/name="Your First 2D Game With Godot 4: START (GDQuest)"
+config/name="Tower Survival"
 run/main_scene="uid://c4msthu2puely"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
 [display]
 
-window/size/viewport_width=1920
+window/size/viewport_width=1900
 window/size/viewport_height=1080
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -92,6 +93,11 @@ project/assembly_name="Getting started with Godot 4"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/colorpicker_presets/plugin.cfg")
+
+[global_group]
+
+technique="Technique objects that perform actions"
+entities=""
 
 [input]
 
@@ -124,10 +130,22 @@ technique1={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+exit_game={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
 3d_physics/layer_2="player"
+
+[physics]
+
+common/physics_ticks_per_second=15
+common/physics_jitter_fix=0.0
+2d/solver/solver_iterations=9
+common/physics_interpolation=true
 
 [rendering]
 

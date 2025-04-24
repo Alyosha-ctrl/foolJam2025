@@ -215,6 +215,7 @@ text = "Restart"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_od0vt")
+volume_db = 3.0
 autoplay = true
 parameters/looping = true
 

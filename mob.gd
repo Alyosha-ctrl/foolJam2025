@@ -103,6 +103,9 @@ func increase_stage():
 func set_level(level_num : int):
 	for i in range(level_num):
 		level_up()
+		
+func mute():
+	$damage_sound.volume_db-=100
 	
 
 

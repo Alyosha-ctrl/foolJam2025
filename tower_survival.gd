@@ -1,7 +1,7 @@
 extends Node2D
 
 var time := 0.0
-var level_time := 4
+var level_time := 2
 var max_entities := 500
 var already_done : bool = false
 
@@ -89,6 +89,8 @@ func kill_most_distant_entity()->void:
 func _on_player_death() -> void:
 	%game_over_screen.visible = true
 	%AudioStreamPlayer.stream_paused = true
+	get_tree().call_group("entities", "mute")
+	%Timer.stop()
 	if(!already_done):
 		%game_over_label.text = %game_over_label.text + "Level Reached " + str(%Player.level)
 		already_done = true

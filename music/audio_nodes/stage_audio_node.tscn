@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi1mhpvm7exmh"]
+
+[ext_resource type="Script" uid="uid://bl338mndch6y6" path="res://music/audio_scripts/stage_audio_script.gd" id="1_b30tb"]
+[ext_resource type="AudioStream" uid="uid://bqbjx4m7eym5w" path="res://music/audio_files/stage_up/StageUp.wav" id="2_2qbkg"]
+
+[node name="StageAudioNode" type="Node2D" node_paths=PackedStringArray("stage_up")]
+script = ExtResource("1_b30tb")
+stage_up = NodePath("StageUp")
+
+[node name="StageUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2qbkg")

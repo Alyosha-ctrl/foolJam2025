@@ -46,7 +46,7 @@ debug_color = Color(0.405622, 0.466561, 1, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
+[node name="Gun" parent="." groups=["player_technique"] instance=ExtResource("3_i3pqv")]
 unique_name_in_owner = true
 position = Vector2(1.19209e-07, -1.19209e-07)
 rotation = 0.127409

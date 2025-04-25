@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://mtq76jfdkgbv"]
+
+[ext_resource type="Script" path="res://mine_character.gd" id="1_iuis7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iuis7"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6hay"]
+radius = 156.08
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i213m"]
+radius = 19.0263
+
+[node name="mine" type="CharacterBody2D"]
+script = ExtResource("1_iuis7")
+
+[node name="hit_box" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+shape = SubResource("CircleShape2D_iuis7")
+debug_color = Color(0.972028, 0, 0.443895, 0.42)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -19, -19, 0, 0, 19, 20, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(0, -19, -19, 0, 0, 19, 20, 0)
+
+[node name="hurt_box" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+shape = SubResource("CircleShape2D_i6hay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i213m")

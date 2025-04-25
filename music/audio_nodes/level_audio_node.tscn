@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://i2p61tyn5ffy"]
+[gd_scene load_steps=7 format=3 uid="uid://i2p61tyn5ffy"]
 
 [ext_resource type="Script" uid="uid://31x6bfk1uoym" path="res://music/audio_scripts/level_audio_script.gd" id="1_gxs1o"]
-[ext_resource type="AudioStream" uid="uid://d11ai0n5glne3" path="res://music/audio_files/level_up/LV1.wav" id="2_wuvvv"]
-[ext_resource type="AudioStream" uid="uid://bmo2wwiqycpfo" path="res://music/audio_files/level_up/LV2.wav" id="3_a2lkh"]
+[ext_resource type="AudioStream" uid="uid://itg84rpfk8ff" path="res://music/audio_files/level_up/LV1.wav" id="2_wuvvv"]
 [ext_resource type="AudioStream" uid="uid://dq051gbqmdqjv" path="res://music/audio_files/level_up/LV3.wav" id="4_qgb0w"]
 [ext_resource type="AudioStream" uid="uid://bts5ajftqlkwk" path="res://music/audio_files/level_up/LV4.wav" id="5_ye2q2"]
 [ext_resource type="AudioStream" uid="uid://c0wwk3h1m86kq" path="res://music/audio_files/level_up/LV5.wav" id="6_vfdvu"]
@@ -21,7 +20,6 @@ lv6 = NodePath("Lv6")
 stream = ExtResource("2_wuvvv")
 
 [node name="Lv2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_a2lkh")
 
 [node name="Lv3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qgb0w")

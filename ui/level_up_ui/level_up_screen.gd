@@ -117,7 +117,7 @@ func player_val_to_old_stats() -> void:
 		max_qi = player.max_qi
 
 func play_level_up_audio() -> void:
-	primary_audio_node.level_node.play_level_up_sound(floor(float(player.level)/10))
+	primary_audio_node.level_node.play_level_up_sound(0)
 
 func hide_lv_screen() -> void:
 	self.visible = false

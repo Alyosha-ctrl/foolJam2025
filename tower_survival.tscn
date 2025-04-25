@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4msthu2puely"]
+[gd_scene load_steps=9 format=3 uid="uid://c4msthu2puely"]
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
 [ext_resource type="PackedScene" uid="uid://bs0ndmavguhjt" path="res://ui/level_up_ui/level_up_screen.tscn" id="2_od0vt"]
 [ext_resource type="PackedScene" uid="uid://cebkk3xvtraj4" path="res://music/audio_nodes/main_audio_node.tscn" id="2_on220"]
 [ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
-[ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="5_tqqor"]
 [ext_resource type="AudioStream" uid="uid://bh6vwsbdfh16r" path="res://music_zapsplat_game_music_action_fast_euro_house_pumping_fun_arcade_rave_024.mp3" id="4_od0vt"]
+[ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="5_tqqor"]
 
 [sub_resource type="Curve2D" id="Curve2D_od0vt"]
 _data = {

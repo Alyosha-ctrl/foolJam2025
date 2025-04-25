@@ -2,12 +2,12 @@ extends Area2D
 
 var technique = "null"
 
-var travelled_disance = 0
-var speed = 1000
-var technique_size = 1000
-var value = 0
+var travelled_disance := 0
+var speed := 1000
+var technique_size := 1000
+var value:float = 0
 var element = "creation"
-var pierce = 0
+var pierce : float = 0
 
 func _physics_process(delta: float) -> void:
 	#gives current direction of the bullet

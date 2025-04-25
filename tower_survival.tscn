@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4msthu2puely"]
+[gd_scene load_steps=6 format=3 uid="uid://c4msthu2puely"]
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cebkk3xvtraj4" path="res://music/audio_nodes/main_audio_node.tscn" id="2_on220"]
 [ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
 [ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="5_tqqor"]
+[ext_resource type="AudioStream" uid="uid://bh6vwsbdfh16r" path="res://music_zapsplat_game_music_action_fast_euro_house_pumping_fun_arcade_rave_024.mp3" id="4_od0vt"]
 
 [sub_resource type="Curve2D" id="Curve2D_od0vt"]
 _data = {
@@ -130,21 +131,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="game_over_screen/ColorRect"]
+[node name="game_over_label" type="Label" parent="game_over_screen/ColorRect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -11.5
-offset_right = 43.5
-offset_bottom = 11.5
+offset_left = -510.0
+offset_top = -138.0
+offset_right = 503.0
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 100
-text = "Game Over"
+text = "Game Over
+"
+horizontal_alignment = 1
 
 [node name="credits" type="Label" parent="game_over_screen/ColorRect"]
 layout_mode = 1
@@ -228,6 +232,13 @@ grow_vertical = 2
 theme_override_colors/icon_normal_color = Color(0, 0.545098, 0, 1)
 theme_override_colors/font_color = Color(0, 0.984314, 0, 1)
 text = "Restart"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_od0vt")
+volume_db = 3.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="changed_speed" from="Player" to="." method="_on_player_changed_speed"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]

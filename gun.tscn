@@ -29,7 +29,5 @@ position = Vector2(209.444, -2.68387)
 scale = Vector2(0.887097, 0.83871)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-43, 29)
-scale = Vector2(1, 1)
+position = Vector2(40, 0)
 shape = SubResource("CircleShape2D_dk5gl")

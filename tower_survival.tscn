@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4msthu2puely"]
+[gd_scene load_steps=7 format=3 uid="uid://c4msthu2puely"]
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
 [ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
 [ext_resource type="AudioStream" uid="uid://bh6vwsbdfh16r" path="res://music_zapsplat_game_music_action_fast_euro_house_pumping_fun_arcade_rave_024.mp3" id="4_od0vt"]
+[ext_resource type="PackedScene" uid="uid://cu3wxwmsctsgr" path="res://mine.tscn" id="6_tqqor"]
 
 [sub_resource type="Curve2D" id="Curve2D_od0vt"]
 _data = {
@@ -218,6 +219,9 @@ stream = ExtResource("4_od0vt")
 volume_db = 3.0
 autoplay = true
 parameters/looping = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_tqqor")]
+position = Vector2(577, 535)
 
 [connection signal="changed_speed" from="Player" to="." method="_on_player_changed_speed"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]

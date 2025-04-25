@@ -142,6 +142,8 @@ func hide_lv_screen() -> void:
 	get_tree().paused = false
 	set_player_stats()
 	player.reset_bars()
+	player.set_speed(player.calculate_speed())
+	player.set_qi_regeneration()
 
 func show_lv_screen(points_to_add: int) -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS

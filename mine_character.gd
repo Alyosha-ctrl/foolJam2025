@@ -17,4 +17,5 @@ func explode(damage, element, pierce):
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	take_damage(100, "true", 100) # Replace with function body.
+	if("strength" in body):
+		take_damage(body.strength, "true", body.strength*2)

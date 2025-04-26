@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu3wxwmsctsgr"]
+[gd_scene load_steps=5 format=3 uid="uid://mtq76jfdkgbv"]
 
 [ext_resource type="Script" uid="uid://c1fpwv52ur5oj" path="res://mine_character.gd" id="1_iuis7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iuis7"]
-radius = 20.0
+radius = 31.0161
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6hay"]
 radius = 156.08

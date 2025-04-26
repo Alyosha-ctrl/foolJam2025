@@ -433,13 +433,13 @@ theme_override_font_sizes/font_size = 30
 text = "Qi regen is the rate at which Qi restores"
 
 [node name="StageUpContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 2
+alignment = 1
 
-[node name="StageUpScreen" parent="Panel/VBoxContainer/HBoxContainer/StageUpContainer" instance=ExtResource("2_7l22l")]
+[node name="StageUpScreen" parent="Panel/VBoxContainer/HBoxContainer/StageUpContainer" node_paths=PackedStringArray("level_up_screen") instance=ExtResource("2_7l22l")]
 layout_mode = 2
+level_up_screen = NodePath("../../../../..")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2

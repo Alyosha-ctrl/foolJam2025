@@ -34,6 +34,7 @@ var stat_points: int = 25:
 	set(new_value):
 		stat_points = new_value
 		stat_point_label.text = ("Remaining stat points: " + str(stat_points))
+		stage_up_screen.on_stat_changed()
 var level: int:
 	set(new_value):
 		level = new_value
@@ -114,6 +115,9 @@ func _ready() -> void:
 	get_tree().paused = false
 	self_modulate.a = 0
 
+# func _process(_delta):
+# 	if(stage_up_container.visible == false):
+# 		stage_up_screen.on_stat_changed()
 
 func player_val_to_new_stats() -> void:
 	if(player.actor_type == "player"):
@@ -140,6 +144,7 @@ func player_val_to_old_stats() -> void:
 		qi_regen = player.qi_regeneration
 
 func set_player_stats() -> void:
+	if(stage_up_container.visible == false):
 		player.strength = new_strength
 		player.grace = new_grace
 		player.power = new_power
@@ -147,6 +152,14 @@ func set_player_stats() -> void:
 		player.defense = new_defense
 		player.max_health = new_max_health
 		player.max_qi = new_max_qi
+	else:
+		player.strength = stage_up_screen.stren
+		player.grace = stage_up_screen.grace
+		player.power = stage_up_screen.power
+		player.control = stage_up_screen.contr
+		player.defense = stage_up_screen.defen
+		player.max_health = stage_up_screen.health
+		player.max_qi = stage_up_screen.qi
 
 func play_level_up_audio() -> void:
 	primary_audio_node.level_node.play_level_up_sound(0)
@@ -174,6 +187,7 @@ func show_lv_screen(points_to_add: int) -> void:
 	def_new_label.remove_theme_color_override("font_color")
 	hp_new_label.remove_theme_color_override("font_color")
 	qi_new_label.remove_theme_color_override("font_color")
+	qi_new_regen_label.remove_theme_color_override("font_color")
 
 	get_tree().paused = true
 	play_level_up_audio()
@@ -194,7 +208,8 @@ func show_stage_screen(points_to_add: int) -> void:
 	def_new_label.remove_theme_color_override("font_color")
 	hp_new_label.remove_theme_color_override("font_color")
 	qi_new_label.remove_theme_color_override("font_color")
-
+	qi_new_regen_label.remove_theme_color_override("font_color")
+	
 	get_tree().paused = true
 	primary_audio_node.stage_node.play_stage_up_sound()
 

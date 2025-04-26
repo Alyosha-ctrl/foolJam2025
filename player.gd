@@ -108,8 +108,8 @@ func add_stats(statMult):
 	%ProgressBar.value = 100*(health/max_health)
 
 func reset_bars() -> void:
-	health = max_health
-	qi = max_qi
+	health = max_health * 1
+	qi = max_qi * 1
 	set_health_bar()
 	set_qi_bar()
 
@@ -130,7 +130,7 @@ func level_up():
 	print("Level: " + str(level))
 		
 func increase_stage():
-	multiply_stats((level/10) + 1)
+	# multiply_stats((level/10) + 1)
 	#Multiplies the new stat distribution
 	stat_dist*=(level/10) + 1
 	

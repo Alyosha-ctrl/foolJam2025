@@ -130,11 +130,11 @@ func level_up():
 	print("Level: " + str(level))
 		
 func increase_stage():
-	# multiply_stats((level/10) + 1)
+	multiply_stats((level/10) + 1)
 	#Multiplies the new stat distribution
 	stat_dist*=(level/10) + 1
 	
-	lvl_up_screen.show_stage_screen(stat_dist)
+	lvl_up_screen.show_stage_screen(stat_dist * 5)
 	
 	print("Stage Increased")
 	const GUN = preload("res://gun.tscn")

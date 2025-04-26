@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bhahthbrxvo8b" path="res://ui/level_up_ui/level_up_screen.gd" id="1_nsbu3"]
 [ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="2_7l22l"]
 
-[node name="LevelUpScreen" type="Control" node_paths=PackedStringArray("stage_up_container", "stage_up_screen", "stat_point_label", "lv_old_label", "lv_new_label", "str_old_label", "str_new_label", "gra_old_label", "gra_new_label", "pow_old_label", "pow_new_label", "con_old_label", "con_new_label", "def_old_label", "def_new_label", "hp_old_label", "hp_new_label", "qi_old_label", "qi_new_label")]
+[node name="LevelUpScreen" type="Control" node_paths=PackedStringArray("stage_up_container", "stage_up_screen", "stat_point_label", "increase_text_field", "lv_old_label", "lv_new_label", "str_old_label", "str_new_label", "gra_old_label", "gra_new_label", "pow_old_label", "pow_new_label", "con_old_label", "con_new_label", "def_old_label", "def_new_label", "hp_old_label", "hp_new_label", "qi_old_label", "qi_new_label")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +16,7 @@ stage_up_container = NodePath("Panel/VBoxContainer/HBoxContainer/StageUpContaine
 stage_up_screen = NodePath("Panel/VBoxContainer/HBoxContainer/StageUpContainer/StageUpScreen")
 stat_point_label = NodePath("Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/HBoxContainer/StatPoints")
 increased_color = Color(0.0627451, 0.698039, 0.937255, 1)
+increase_text_field = NodePath("Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/HBoxContainer2/AmountTextField")
 lv_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/OldLV")
 lv_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/NewLV")
 str_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/STRHBox/StrengthOld")
@@ -226,7 +227,26 @@ text = "10"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 45
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[node name="AmountTextField" type="TextEdit" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Amount to add here"
+
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 116
 
@@ -380,6 +400,7 @@ theme_override_font_sizes/font_size = 30
 text = "Qi is consumed to use activated abilities"
 
 [node name="StageUpContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -396,6 +417,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Continue"
 
+[connection signal="text_changed" from="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/HBoxContainer2/AmountTextField" to="." method="_on_amount_text_field_text_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/STRPlusHBox/UndoSTR" to="." method="_on_undo_str_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/STRPlusHBox/AddSTR" to="." method="_on_add_str_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/GRAPlusHBox/UndoGRA" to="." method="_on_undo_gra_pressed"]

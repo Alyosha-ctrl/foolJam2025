@@ -7,6 +7,7 @@ class_name LevelUpScreen extends Control
 
 @export var stat_point_label: Label
 @export var increased_color: Color
+@export var increase_text_field: TextEdit
 @export var lv_old_label: Label
 @export var lv_new_label: Label
 @export var str_old_label: Label
@@ -25,6 +26,7 @@ class_name LevelUpScreen extends Control
 @export var qi_new_label: Label
 
 var starting_stat_points: int
+var amount_to_change: int = 1
 
 var stat_points: int = 25:
 	set(new_value):
@@ -204,78 +206,90 @@ func update_hp_qi() -> void:
 	else:
 		hp_new_label.remove_theme_color_override("font_color")
 
+func limit_text_field() -> void:
+	var amount_int: int
+	amount_int = int(increase_text_field.text)
+	if(amount_int > stat_points):
+		amount_int = stat_points
+	increase_text_field.text = (str(amount_int))
+	increase_text_field.set_caret_column(str(increase_text_field.text).length())
+	amount_to_change = amount_int
 
 func _on_undo_str_pressed() -> void:
-	if(new_strength != strength):
-		new_strength -= 1
-		stat_points += 1
+	if(new_strength != strength && amount_to_change <= (new_strength - strength)):
+		new_strength -= amount_to_change
+		stat_points += amount_to_change
 	if(new_strength == strength):
 		str_new_label.remove_theme_color_override("font_color")
 	update_hp_qi()
 
 
 func _on_add_str_pressed() -> void:
-	if(stat_points != 0):
-		new_strength += 1
-		stat_points -= 1
+	if(stat_points >= 0  && amount_to_change <= stat_points):
+		new_strength += amount_to_change
+		stat_points -= amount_to_change
 		str_new_label.add_theme_color_override("font_color",increased_color)
 	update_hp_qi()
 
 
 func _on_undo_gra_pressed() -> void:
-	if(new_grace != grace):
-		new_grace -= 1
-		stat_points += 1
+	if(new_grace != grace && amount_to_change <= (new_grace - grace)):
+		new_grace -= amount_to_change
+		stat_points += amount_to_change
 	if(new_grace == grace):
 		gra_new_label.remove_theme_color_override("font_color")
 
 
 func _on_add_gra_pressed() -> void:
-	if(stat_points != 0):
-		new_grace += 1
-		stat_points -= 1
+	if(stat_points >= 0  && amount_to_change <= stat_points):
+		new_grace += amount_to_change
+		stat_points -= amount_to_change
 		gra_new_label.add_theme_color_override("font_color",increased_color)
 
 
 func _on_undo_pow_pressed() -> void:
-	if(new_power != power):
-		new_power -= 1
-		stat_points += 1
+	if(new_power != power && amount_to_change <= (new_power - power)):
+		new_power -= amount_to_change
+		stat_points += amount_to_change
 	if(new_power == power):
 		pow_new_label.remove_theme_color_override("font_color")
 	update_hp_qi()
 
 
 func _on_add_pow_pressed() -> void:
-	if(stat_points != 0):
-		new_power += 1
-		stat_points -= 1
+	if(stat_points >= 0  && amount_to_change <= stat_points):
+		new_power += amount_to_change
+		stat_points -= amount_to_change
 		pow_new_label.add_theme_color_override("font_color",increased_color)
 	update_hp_qi()
 
 func _on_undo_con_pressed() -> void:
-	if(new_control != control):
-		new_control -= 1
-		stat_points += 1
+	if(new_control != control && amount_to_change <= (new_control - control)):
+		new_control -= amount_to_change
+		stat_points += amount_to_change
 	if(new_control == control):
 		con_new_label.remove_theme_color_override("font_color")
 
 func _on_add_con_pressed() -> void:
-	if(stat_points != 0):
-		new_control += 1
-		stat_points -= 1
+	if(stat_points >= 0  && amount_to_change <= stat_points):
+		new_control += amount_to_change
+		stat_points -= amount_to_change
 		con_new_label.add_theme_color_override("font_color",increased_color)
 
 
 func _on_undo_def_pressed() -> void:
-	if(new_defense != defense):
-		new_defense -= 1
-		stat_points += 1
+	if(new_defense != defense && amount_to_change <= (new_defense - defense)):
+		new_defense -= amount_to_change
+		stat_points += amount_to_change
 	if(new_defense == defense):
 		def_new_label.remove_theme_color_override("font_color")
 
 func _on_add_def_pressed() -> void:
-	if(stat_points != 0):
-		new_defense += 1
-		stat_points -= 1
+	if(stat_points >= 0  && amount_to_change <= stat_points):
+		new_defense += amount_to_change
+		stat_points -= amount_to_change
 		def_new_label.add_theme_color_override("font_color",increased_color)
+
+
+func _on_amount_text_field_text_changed() -> void:
+	limit_text_field()

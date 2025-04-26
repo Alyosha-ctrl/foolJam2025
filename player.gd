@@ -5,7 +5,7 @@ var actor_type : String = "player"
 
 var stat_dist : float = 5
 var level : int = 1
-var exp : int = 0
+var exp : float = 0
 var exp_max : int = 9
 
 signal death
@@ -50,7 +50,7 @@ func set_qi_regeneration() -> void:
 	qi_regeneration = control*9
 	
 		
-func add_exp(newExp : int):
+func add_exp(newExp : float):
 	exp += newExp
 	while(exp > exp_max):
 		exp -= exp_max

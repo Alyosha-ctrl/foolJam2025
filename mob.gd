@@ -54,6 +54,11 @@ func take_damage(damage, element, pierce):
 		var smoke = SMOKE_SCENE.instantiate()
 		smoke.global_position = self.global_position
 		get_parent().add_child(smoke)
+		const QI_BALL = preload("res://qi_ball.tscn")
+		var qi_ball = QI_BALL.instantiate()
+		qi_ball.global_position = global_position
+		qi_ball.exp_amount = level*(level/10 + 1)
+		get_parent().add_child(qi_ball)
 		queue_free()
 		
 	

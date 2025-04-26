@@ -69,7 +69,7 @@ func level_up():
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	%Player.add_exp(1)
+	%Player.add_exp(.5)
 	if(!(len(get_children()) > max_entities)):
 		spawn_mob()
 		spawn_object()

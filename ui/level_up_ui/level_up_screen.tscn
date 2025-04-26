@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bhahthbrxvo8b" path="res://ui/level_up_ui/level_up_screen.gd" id="1_nsbu3"]
 [ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="2_7l22l"]
 
-[node name="LevelUpScreen" type="Control" node_paths=PackedStringArray("stage_up_container", "stage_up_screen", "stat_point_label", "increase_text_field", "lv_old_label", "lv_new_label", "str_old_label", "str_new_label", "gra_old_label", "gra_new_label", "pow_old_label", "pow_new_label", "con_old_label", "con_new_label", "def_old_label", "def_new_label", "hp_old_label", "hp_new_label", "qi_old_label", "qi_new_label")]
+[node name="LevelUpScreen" type="Control" node_paths=PackedStringArray("stage_up_container", "stage_up_screen", "stat_point_label", "increase_text_field", "lv_old_label", "lv_new_label", "str_old_label", "str_new_label", "gra_old_label", "gra_new_label", "pow_old_label", "pow_new_label", "con_old_label", "con_new_label", "def_old_label", "def_new_label", "hp_old_label", "hp_new_label", "qi_old_label", "qi_new_label", "qi_regen_label", "qi_new_regen_label")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -31,8 +31,10 @@ def_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBo
 def_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/DEFHBox/DefenseNew")
 hp_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox/HPOld")
 hp_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/HPHbox/HPNew")
-qi_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox/QiOld")
-qi_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox/QiNew")
+qi_old_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox/QiRegenOld")
+qi_new_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox/QiRegenNew")
+qi_regen_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIGenHbox/QiRegenOld")
+qi_new_regen_label = NodePath("Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIGenHbox/QiRegenNew")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -208,17 +210,37 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Qi" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+[node name="QiRegen" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Qi: "
 
-[node name="QiOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+[node name="QiRegenOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "10 -> "
 
-[node name="QiNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+[node name="QiRegenNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="QIGenHbox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Qi" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIGenHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Qi Regen: "
+
+[node name="QiRegenOld" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIGenHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "10 -> "
+
+[node name="QiRegenNew" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/QIGenHbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "10"
@@ -305,7 +327,8 @@ theme_override_constants/margin_left = 25
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
 text = "Grace increases movement speed
-and attack rate"
+and decreases \"wait_time\", the amount
+of time that passes before a technique is used"
 
 [node name="POWPlusHBox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
 layout_mode = 2
@@ -398,6 +421,16 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Qi is consumed to use activated abilities"
+
+[node name="QIRegenDescHbox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/QIRegenDescHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Qi regen is the rate at which Qi restores"
 
 [node name="StageUpContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 visible = false

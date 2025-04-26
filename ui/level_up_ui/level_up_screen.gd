@@ -24,6 +24,8 @@ class_name LevelUpScreen extends Control
 @export var hp_new_label: Label
 @export var qi_old_label: Label
 @export var qi_new_label: Label
+@export var qi_regen_label: Label
+@export var qi_new_regen_label: Label
 
 var starting_stat_points: int
 var amount_to_change: int = 1
@@ -64,6 +66,10 @@ var max_qi: float:
 	set(new_value):
 		max_qi = new_value
 		qi_old_label.text = (str(max_qi) + " -> ")
+var qi_regen: float:
+	set(new_value):
+		qi_regen = new_value
+		qi_regen_label.text = (str(qi_regen) + " -> ")
 var new_level: int:
 	set(new_value):
 		new_level = new_value
@@ -96,6 +102,10 @@ var new_max_qi: float:
 	set(new_value):
 		new_max_qi = new_value
 		qi_new_label.text = (str(new_max_qi))
+var new_qi_regen: float:
+	set(new_value):
+		new_qi_regen = new_value
+		qi_new_regen_label.text = (str(new_qi_regen))
 
 
 
@@ -115,6 +125,7 @@ func player_val_to_new_stats() -> void:
 		new_defense = player.defense
 		new_max_health = player.max_health
 		new_max_qi = player.max_qi
+		new_qi_regen = player.qi_regeneration
 
 func player_val_to_old_stats() -> void:
 	if(player.actor_type == "player"):
@@ -126,6 +137,7 @@ func player_val_to_old_stats() -> void:
 		defense = player.defense
 		max_health = player.max_health
 		max_qi = player.max_qi
+		qi_regen = player.qi_regeneration
 
 func set_player_stats() -> void:
 		player.strength = new_strength
@@ -195,6 +207,7 @@ func _on_continue_button_pressed() -> void:
 func update_hp_qi() -> void:
 	new_max_qi = new_power * 25
 	new_max_health = new_strength * 25
+	new_qi_regen = new_control * 9
 
 	if(new_max_qi > max_qi):
 		qi_new_label.add_theme_color_override("font_color", increased_color)
@@ -205,6 +218,13 @@ func update_hp_qi() -> void:
 		hp_new_label.add_theme_color_override("font_color",increased_color)
 	else:
 		hp_new_label.remove_theme_color_override("font_color")
+	
+	if(new_qi_regen > qi_regen):
+		qi_new_regen_label.add_theme_color_override("font_color",increased_color)
+	else:
+		qi_new_regen_label.remove_theme_color_override("font_color")
+
+
 
 func limit_text_field() -> void:
 	var amount_int: int
@@ -269,12 +289,14 @@ func _on_undo_con_pressed() -> void:
 		stat_points += amount_to_change
 	if(new_control == control):
 		con_new_label.remove_theme_color_override("font_color")
+	update_hp_qi()
 
 func _on_add_con_pressed() -> void:
 	if(stat_points >= 0  && amount_to_change <= stat_points):
 		new_control += amount_to_change
 		stat_points -= amount_to_change
 		con_new_label.add_theme_color_override("font_color",increased_color)
+	update_hp_qi()
 
 
 func _on_undo_def_pressed() -> void:

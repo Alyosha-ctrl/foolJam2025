@@ -116,6 +116,7 @@ primary_audio_node = NodePath("../../MainAudioNode")
 visible = false
 player = NodePath("../../Player")
 primary_audio_node = NodePath("../../MainAudioNode")
+increased_color = Color(0, 0, 0, 1)
 
 [node name="game_over_screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

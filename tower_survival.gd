@@ -1,7 +1,6 @@
 extends Node2D
 
 var time := 0.0
-var level_time := 6
 var max_entities := 500
 var already_done : bool = false
 
@@ -59,26 +58,21 @@ func spawn_object():
 	%PathFollow2D.progress_ratio = randf()
 	new_object.global_position = %PathFollow2D.global_position
 	add_child(new_object)
-
-func level_up():
-	if(int(round(time+1))%level_time == 0):
-		%Player.level_up()
-		time = 0
 		
 
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	%Player.add_exp(.5)
+	%Player.add_exp(1)
 	if(!(len(get_children()) > max_entities)):
 		spawn_mob()
 		spawn_object()
 	else:
-		if(len(get_children()) > max_entities*2):
+		#if(len(get_children()) > max_entities*2):
 			for i in (range(len(get_children()) - max_entities)):
 				kill_most_distant_entity()
-		else:
-			kill_most_distant_entity()
+		#else:
+			#kill_most_distant_entity()
 	time+=($Timer.wait_time)
 	
 func kill_most_distant_entity()->void:

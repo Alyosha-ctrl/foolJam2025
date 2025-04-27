@@ -4,7 +4,7 @@ extends Area2D
 var caster
 var type : String = "ranged"
 var element : String = "creation"
-var modifier : String = "auto_aim"
+var modifier : String = "powerful"
 var action : String = "wave"
 
 var time : float = 0.0
@@ -23,7 +23,13 @@ var original_size := get_size_from_action()
 var size := original_size
 
 var stat_dist : Dictionary = {"cost":15, "value":5, "pierce":1}
-var original:= .5
+var original: float= .5
+
+func _ready() -> void:
+	if(modifier == "powerful"):
+		original *= 1.15
+		value = value * 1.3
+		stat_dist["value"] = stat_dist["value"]*1.3
 
 func get_size_from_action() -> float:
 	if(action == "shoot"):
@@ -72,6 +78,17 @@ func _physics_process(delta: float) -> void:
 			if(time >= cooldown):
 				shoot()
 				time = 0.0
+	elif(type == "ranged" and caster.actor_type == "player"):
+		look_at(get_global_mouse_position())
+		if(time >= cooldown):
+			if(action == "shoot"):
+				shoot()
+			elif(action == "wave"):
+				wave()
+			time = 0.0
+		
+				
+				
 		
 		
 func value_adder():

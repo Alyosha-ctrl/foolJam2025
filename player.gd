@@ -39,6 +39,10 @@ func set_speed(new_speed):
 func set_qi_bar() -> void:
 	%qi_bar.value = 100*(qi/max_qi)
 	
+func set_health(newHealth) -> void:
+	health = newHealth
+	set_health_bar()
+	
 func set_health_bar() -> void:
 	%health_bar.value = 100*(health/max_health)
 

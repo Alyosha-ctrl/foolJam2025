@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvjbpd70qgapp"]
+
+[ext_resource type="Script" uid="uid://buh5uvsy0nnqp" path="res://health_drop.gd" id="1_aytts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wik8"]
+radius = 50.0
+
+[node name="health_drop" type="Area2D" groups=["drops"]]
+script = ExtResource("1_aytts")
+
+[node name="Grab_Area" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_3wik8")
+
+[node name="Cross" type="Polygon2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-6, -11, 6, -11, 6, -3, 13, -3, 13, 4, 6, 4, 6, 12, -6, 12, -6, 4, -12, 4, -12, -3, -6, -3)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Cross"]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-6, -11, 6, -11, 6, -3, 13, -3, 13, 4, 6, 4, 6, 12, -6, 12, -6, 4, -12, 4, -12, -3, -6, -3)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

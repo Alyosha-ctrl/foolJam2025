@@ -10,8 +10,11 @@ var action : String = "wave"
 var time : float = 0.0
 
 var level:int=1
-var cooldown : float = .5
-var cost : float = 1
+var current_exp : int = 0
+var exp_needed : int = 9
+
+var cooldown : float = 1
+var cost : float = 15
 var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1
@@ -19,7 +22,7 @@ var wait_time : float = cooldown/2
 var original_size := get_size_from_action()
 var size := original_size
 
-var stat_dist : Dictionary = {"cost":1, "value":5, "pierce":1}
+var stat_dist : Dictionary = {"cost":15, "value":5, "pierce":1}
 var original:= .5
 
 func get_size_from_action() -> float:

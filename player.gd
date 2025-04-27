@@ -122,30 +122,38 @@ func add_stats(statMult):
 	qi = max_qi*1
 	set_speed(calculate_speed())
 	%health_bar.value = 100*(health/max_health)
-	
+
+func reset_bars() -> void:
+	health = max_health * 1
+	qi = max_qi * 1
+	set_health_bar()
+	set_qi_bar()
+
+
 func level_up():
 	lvl_up_screen.player_val_to_old_stats()
 	
-	add_stats(stat_dist)
+
 	level += 1
 	if(level%10 == 0):
 		increase_stage()
 	else:
-		lvl_up_screen.show_lv_screen()
+		lvl_up_screen.show_lv_screen(stat_dist * 5)
 	
 	lvl_up_screen.player_val_to_new_stats()
 	%Gun.level_up()
-  
+
 	print("Level Up")
 	print("Level: " + str(level))
 		
 func increase_stage():
-	multiply_stats((level/10) + 1)
+	# multiply_stats((level/10) + 1)
 	#Multiplies the new stat distribution
+	
+	lvl_up_screen.show_stage_screen(stat_dist * 5)
+	
 	stat_dist*=(level/10) + 1
-	
-	lvl_up_screen.show_stage_screen()
-	
+
 	print("Stage Increased")
 	const GUN = preload("res://gun.tscn")
 	var new_gun = GUN.instantiate()

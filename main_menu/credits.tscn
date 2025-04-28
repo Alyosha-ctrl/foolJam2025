@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhme8lsur2bo5"]
+
+[ext_resource type="Script" uid="uid://bmhohwjfl3jvw" path="res://main_menu/credits.gd" id="1_rgjq7"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_rgjq7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 1900.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ReturnButtonHbox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/VBoxContainer/ReturnButtonHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Return to Main menu"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AddItemsHere" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Example Label" type="Label" parent="CanvasLayer/VBoxContainer/ScrollContainer/AddItemsHere"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "Example Text Here, delete this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bottom text to demo scrolling"
+
+[node name="Margin for clean spacing" type="MarginContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer/AddItemsHere"]
+layout_mode = 2
+theme_override_constants/margin_top = 75
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ReturnButtonHbox/ReturnButton" to="." method="_on_return_button_pressed"]

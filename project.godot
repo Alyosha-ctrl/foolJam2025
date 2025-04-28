@@ -75,7 +75,7 @@ Settings/Show_Tooltips=true
 [application]
 
 config/name="Tower Survival"
-run/main_scene="uid://c4msthu2puely"
+run/main_scene="uid://dkxo0p3u2w4wq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 

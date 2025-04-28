@@ -73,7 +73,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("exit_game"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	
 	var overlaps = %hurt_box.get_overlapping_bodies()
 	for entity in overlaps:

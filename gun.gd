@@ -31,9 +31,9 @@ func _ready() -> void:
 		value = 15
 		cost = 25
 	elif(action== "shoot"):
-		original = .5
-		value = 5
-		cost = 10
+		original = .3
+		value = 10
+		cost = 15
 		
 	if(modifier == "powerful"):
 		original *= 1.15
@@ -42,6 +42,7 @@ func _ready() -> void:
 		
 	elif(modifier == "large"):
 		original_size += 500
+	
 	
 
 func get_size_from_action() -> float:

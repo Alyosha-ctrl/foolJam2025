@@ -73,11 +73,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("exit_game"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	
 	var overlaps = %hurt_box.get_overlapping_bodies()
 	for entity in overlaps:
-		entity.take_damage(strength*delta, "bump", strength*2)
+		entity.take_damage((strength+grace/2)*delta, "bump", strength*2)
 			
 
 func take_damage(damage, element, pierce):
@@ -166,6 +166,7 @@ func increase_stage():
 	if(num_of_tech == 1):
 		%tech_position1.add_child(new_gun)
 		new_gun.technique_num = "technique1"
+		new_gun.action = "wave"
 	elif(num_of_tech == 2):
 		%tech_position2.add_child(new_gun)
 		new_gun.technique_num = "technique2"

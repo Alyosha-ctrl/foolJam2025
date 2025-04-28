@@ -78,7 +78,7 @@ config/name="Heaven Is Reached Through Polygons"
 config/description="You a humble Nonagon seek to ascend to Heaven, and with a flurry of scything blades, explosions, and bullets you just might reach the gates.
 "
 config/version=".3"
-run/main_scene="uid://c4msthu2puely"
+run/main_scene="uid://dkxo0p3u2w4wq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
@@ -191,7 +191,7 @@ technique9={
 
 [physics]
 
-common/physics_ticks_per_second=15
+common/physics_ticks_per_second=20
 common/physics_jitter_fix=0.0
 2d/solver/solver_iterations=9
 common/physics_interpolation=true

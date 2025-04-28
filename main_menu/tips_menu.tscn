@@ -20,18 +20,27 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/normal_font_size = 40
 text = "General Tips
+Toggling
 You can toggle your techniques by pressing the number it is associated with
 Which is the order in which you attined the technique
 It starts at 0, so your first gun can be toggled by pressing 0, and so on
+Same as enemies deal damage to you by touching you, it is vice versa. 
+Staging Up
+Every 10 levels you Stage Up, and multiply all your stats, this rewards specialization, but mid stage gameplay punishes it. Experiment see how much you can get away with.
+Bump Damage
+Due to the damage its best to do this to weak slow mobs at the edge of the pack.
 The duration of a status good or bad is equal to half the cooldown of the technique. 
+Negative Scaling
 All costs and negative effects scale in level except for cooldown and wait_time, so while a technique leveling might increase its damage it will also increase its cost.
+Additionally not investing in a damage stat consistently will eventually result in you hitting like pillows against their hp.
+Leaving The Game
 You can leave the game and return to the main menu by pressing \"esc\"
 Stats
 Strength
 Increases melee damage to a major degree, Health and Pierce
 Pierce is how much your damage ignore defense, at a 1:3 ratio
 So if your opponent has 30 defense and you have 30 strength you can ignore 10 of their defense.
-Dexterity
+Grace
 Increases melee damage to a minor degree, Speed and wait_time
 Speed is determined by a log of your dexterity.
 wait_time is how long you wait after activating an ability for it to do something. This allows for indicators. 

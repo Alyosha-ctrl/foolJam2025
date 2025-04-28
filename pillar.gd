@@ -6,7 +6,7 @@ func _ready() -> void:
 
 func take_damage(damage, element, pierce):
 	if(element != "bump"):
-		if((randi() % 10) > 3):
+		if((randi() % 10) > 7):
 			var qi_ball = HEALTH_DROP.instantiate()
 			qi_ball.global_position = global_position
 			add_sibling(qi_ball)

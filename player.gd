@@ -165,22 +165,31 @@ func increase_stage():
 	new_gun.set_level(level)
 	if(num_of_tech == 1):
 		%tech_position1.add_child(new_gun)
+		new_gun.technique_num = "technique1"
 	elif(num_of_tech == 2):
 		%tech_position2.add_child(new_gun)
+		new_gun.technique_num = "technique2"
 	elif(num_of_tech == 3):
 		%tech_position3.add_child(new_gun)
+		new_gun.technique_num = "technique3"
 	elif(num_of_tech == 4):
 		%tech_position4.add_child(new_gun)
+		new_gun.technique_num = "technique4"
 	elif(num_of_tech == 5):
 		%tech_position5.add_child(new_gun)
+		new_gun.technique_num = "technique5"
 	elif(num_of_tech == 6):
 		%tech_position6.add_child(new_gun)
+		new_gun.technique_num = "technique6"
 	elif(num_of_tech == 7):
 		%tech_position7.add_child(new_gun)
+		new_gun.technique_num = "technique7"
 	elif(num_of_tech == 8):
 		%tech_position8.add_child(new_gun)
+		new_gun.technique_num = "technique8"
 	elif(num_of_tech == 9):
 		%tech_position9.add_child(new_gun)
+		new_gun.technique_num = "technique9"
 	num_of_tech +=1
 	
 		

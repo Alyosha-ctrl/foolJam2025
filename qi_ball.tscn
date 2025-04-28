@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wik8"]
 radius = 50.0
 
-[node name="exp_ball" type="Area2D"]
+[node name="exp_ball" type="Area2D" groups=["drops"]]
 script = ExtResource("1_5xxeq")
 
 [node name="Octogan" type="Polygon2D" parent="."]

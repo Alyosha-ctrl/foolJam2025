@@ -5,16 +5,16 @@ var caster
 var type : String = "ranged"
 var element : String = "creation"
 var modifier : String = "auto_aim"
-var action : String = "wave"
+var action : String = "shoot"
 
+var technique_num : String = "technique0"
+var active : bool = true
 var time : float = 0.0
 
 var level:int=1
-var current_exp : int = 0
-var exp_needed : int = 9
 
 var cooldown : float = 1
-var cost : float = 15
+var cost : float = 5
 var high_cost : float = cost
 var value : float = 5.0
 var pierce : float = 1
@@ -22,8 +22,27 @@ var wait_time : float = cooldown/2
 var original_size := get_size_from_action()
 var size := original_size
 
-var stat_dist : Dictionary = {"cost":15, "value":5, "pierce":1}
-var original:= .5
+var stat_dist : Dictionary = {"cost":5, "value":5, "pierce":1}
+var original: float= .5
+
+func _ready() -> void:
+	if(action == "wave"):
+		original = 3.0
+		value = 15
+		cost = 25
+	elif(action== "shoot"):
+		original = .5
+		value = 5
+		cost = 10
+		
+	if(modifier == "powerful"):
+		original *= 1.15
+		value = value * 1.3
+		stat_dist["value"] = stat_dist["value"]*1.3
+		
+	elif(modifier == "large"):
+		original_size += 500
+	
 
 func get_size_from_action() -> float:
 	if(action == "shoot"):
@@ -52,26 +71,48 @@ func set_cost():
 
 func _physics_process(delta: float) -> void:
 	time+=delta
-	if(modifier == "auto_aim"):
-		if(!caster.actor_type == "mob"):
-			var enemies_in_range = get_overlapping_bodies()
-			if(enemies_in_range.size() > 0):
-				var target = enemies_in_range.front()
-				look_at(target.global_position)
-			if(time >= cooldown):
-				if(action == "shoot"):
-					shoot()
-				elif(action == "wave"):
-					wave()
-				time = 0.0
+	if (Input.is_action_just_pressed(technique_num) and active == true):
+		active = false
+	elif(Input.is_action_just_pressed(technique_num)):
+		active = true
+		
+	if(active):
+		if(modifier == "auto_aim"):
+			if(!caster.actor_type == "mob"):
+				var enemies_in_range = get_overlapping_bodies()
+				if(enemies_in_range.size() > 0):
+					var target = enemies_in_range.front()
+					look_at(target.global_position)
+				if(time >= cooldown):
+					if(action == "shoot"):
+						shoot()
+					elif(action == "wave"):
+						wave()
+					time -= cooldown
 		elif (type == "ranged" and caster.actor_type == "mob"):
 			#var entities_in_range = get_overlapping_bodies()
 			#look_at(caster.player.global_position)
 			var angle = (caster.player.global_position - self.global_position).angle()
 			self.global_rotation = lerp_angle(self.global_rotation, angle, delta*.5)
 			if(time >= cooldown):
-				shoot()
-				time = 0.0
+				if(action == "shoot"):
+					shoot()
+				elif(action == "wave"):
+					wave()
+				time -= cooldown
+		elif(type == "ranged" and caster.actor_type == "player"):
+			look_at(get_global_mouse_position())
+			if(time >= cooldown 
+			#and Input.is_action_pressed(technique_num)
+			):
+				if(action == "shoot"):
+					shoot()
+				elif(action == "wave"):
+					wave()
+				time -= cooldown
+		
+				
+				
 		
 		
 func value_adder():

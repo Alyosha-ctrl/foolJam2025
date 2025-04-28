@@ -13,15 +13,6 @@ offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ReturnButtonHbox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="ReturnButton" type="Button" parent="CanvasLayer/VBoxContainer/ReturnButtonHbox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "Return to Main menu"
-
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -34,27 +25,59 @@ size_flags_vertical = 3
 [node name="Example Label" type="Label" parent="CanvasLayer/VBoxContainer/ScrollContainer/AddItemsHere"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 50
-text = "Example Text Here, delete this
+theme_override_font_sizes/font_size = 20
+text = "Credits
+Game Director
+Alexey “Azriel” Berezhnoy
 
+UI Designer
+Joshua Christopher Jose Torres-Hopkins
 
+Game Programmers
+Alexey “Azriel” Berezhnoy
+Joshua Christopher Jose Torres-Hopkins
 
+Sound Designer
+Joshua Christopher Jose Torres-Hopkins
 
+Mechanics Programmer
+Alexey “Azriel” Berezhnoy
 
+Code Advisors
+Kyle Lynn for some help in bug fixing
+Zionna Brown for various help in wrangling Godot
+Jackie Luc for increased speed altering camera zoom
+Joshua Christopher Jose Torres-Hopkins for performance help
 
+Playtesters
+Alexander Betancourt
+Raimund A Warbasse
+Kyle Lynn
+Alora Cochrane
+Zionna Brown
+Joshua Christopher Jose Torres-Hopkins
+Tomas ___
+Emanuel ___
+Alexey “Azriel” Berezhnoy
 
-
-
-
-
-
-
-
-
-Bottom text to demo scrolling"
+Intenet Obtained Assets
+GDQuest Your First 2D GAME From Zero in Godot 4 **Vampire Survivor Style**
+Sound effects and music obtained from zapsplat.com
+Loipesnas for “smoother look_at() in 2d”
+"
+horizontal_alignment = 1
 
 [node name="Margin for clean spacing" type="MarginContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer/AddItemsHere"]
 layout_mode = 2
 theme_override_constants/margin_top = 75
+
+[node name="ReturnButtonHbox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/VBoxContainer/ReturnButtonHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Return to Main menu"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ReturnButtonHbox/ReturnButton" to="." method="_on_return_button_pressed"]

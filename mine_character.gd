@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+var actor_type = "object_mine"
 func take_damage(damage, element, pierce):
 	const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 	var smoke = SMOKE_SCENE.instantiate()
@@ -17,5 +17,6 @@ func explode(damage, element, pierce):
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
+	print(body.actor_type)
 	if("strength" in body):
 		take_damage(body.strength, "true", body.strength*2)

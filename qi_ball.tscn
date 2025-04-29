@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://v0lagbt3rsfk"]
+[gd_scene load_steps=3 format=3 uid="uid://d2r0qs7e1utxp"]
 
-[ext_resource type="Script" uid="uid://toyek80kp6cm" path="res://qi_ball.gd" id="1_5xxeq"]
+[ext_resource type="Script" path="res://qi_ball.gd" id="1_5xxeq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wik8"]
 radius = 50.0

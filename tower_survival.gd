@@ -4,6 +4,9 @@ var time := 0.0
 
 var max_entities := 500
 var already_done : bool = false
+const PILLAR = preload("res://pillar.tscn")
+const MINE = preload("res://mine.tscn")
+const OBJECT_LIST = [PILLAR, MINE]
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -53,8 +56,7 @@ func spawn_mob():
 	
 func spawn_object():
 	#later will be a random object now is just a tree soo to be pillar.
-	const PILLAR = preload("res://pillar.tscn")
-	var new_object = PILLAR.instantiate()
+	var new_object = OBJECT_LIST[randi()%OBJECT_LIST.size()].instantiate()
 	#Randomly create's the mob on a point along the path
 	%PathFollow2D.progress_ratio = randf()
 	new_object.global_position = %PathFollow2D.global_position

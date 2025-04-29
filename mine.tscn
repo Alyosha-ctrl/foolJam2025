@@ -15,7 +15,6 @@ radius = 19.0263
 script = ExtResource("1_iuis7")
 
 [node name="hit_box" type="Area2D" parent="."]
-
 visibility_layer = 3
 collision_layer = 3
 collision_mask = 3
@@ -30,6 +29,7 @@ polygon = PackedVector2Array(0, -19, -19, 0, 0, 19, 20, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
 scale = Vector2(0.5, 0.5)
+color = Color(0.415686, 0.0980392, 0, 1)
 polygon = PackedVector2Array(0, -19, -19, 0, 0, 19, 20, 0)
 
 [node name="hurt_box" type="Area2D" parent="."]

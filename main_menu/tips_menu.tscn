@@ -33,6 +33,8 @@ The duration of a status good or bad is equal to half the cooldown of the techni
 Negative Scaling
 All costs and negative effects scale in level except for cooldown and wait_time, so while a technique leveling might increase its damage it will also increase its cost.
 Additionally not investing in a damage stat consistently will eventually result in you hitting like pillows against their hp.
+Cooldown Limit
+The game process's attempts to shoot your gun using physics, and thus it has a hard cap equal to the physics tick
 Leaving The Game
 You can leave the game and return to the main menu by pressing \"esc\"
 Stats

@@ -1,4 +1,5 @@
 extends StaticBody2D
+var actor_type : String = "object_pillar"
 
 const HEALTH_DROP = preload("res://health_drop.tscn")
 func _ready() -> void:

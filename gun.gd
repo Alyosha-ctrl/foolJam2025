@@ -4,7 +4,7 @@ extends Area2D
 var caster
 var type : String = "ranged"
 var element : String = "creation"
-var modifier : String = "auto_aim"
+var modifier : String = "self"
 var action : String = "shoot"
 
 var technique_num : String = "technique0"

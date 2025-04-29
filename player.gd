@@ -59,7 +59,7 @@ func add_exp(newExp : float):
 	while(exp > exp_max):
 		exp -= exp_max
 		level_up()
-		exp_max+=9*(level/10 + 1)
+		exp_max+=9*pow(level/10 +1, 2)
 	set_exp_bar()
 	
 	
@@ -157,6 +157,7 @@ func increase_stage():
 	lvl_up_screen.show_stage_screen(stat_dist * 5)
 	
 	stat_dist*=(level/10) + 1
+	exp_max *= pow((level/10) + 1, 2)
 
 	print("Stage Increased")
 	const GUN = preload("res://gun.tscn")

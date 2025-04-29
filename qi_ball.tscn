@@ -1,23 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2r0qs7e1utxp"]
+[gd_scene load_steps=3 format=3 uid="uid://v0lagbt3rsfk"]
 
-[ext_resource type="Script" path="res://qi_ball.gd" id="1_5xxeq"]
+[ext_resource type="Script" uid="uid://toyek80kp6cm" path="res://qi_ball.gd" id="1_5xxeq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wik8"]
-radius = 46.0109
+radius = 50.0
 
-[node name="Area2D" type="Area2D"]
+[node name="exp_ball" type="Area2D" groups=["drops"]]
 script = ExtResource("1_5xxeq")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(1.3, 1.3)
+[node name="Octogan" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, -10, -7, -7, -10, 0, -7, 7, 0, 10, 7, 7, 10, 0, 7, -7)
 
-[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Octogan"]
 scale = Vector2(0.7, 0.7)
 polygon = PackedVector2Array(0, -10, -7, -7, -10, 0, -7, 7, 0, 10, 7, 7, 10, 0, 7, -7)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Grab_Area" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3wik8")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

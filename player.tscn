@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jr86s26ll4l"]
+[gd_scene load_steps=9 format=3 uid="uid://jr86s26ll4l"]
 
 [ext_resource type="Script" uid="uid://btvtu2m21avdr" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="StyleBox" uid="uid://dynlqlou577nl" path="res://player_bar_background.tres" id="3_hqtel"]
@@ -17,8 +17,15 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtel"]
+bg_color = Color(0.0627451, 0.698039, 0.937255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3pqv"]
-bg_color = Color(0.238078, 0.0908163, 1, 1)
+bg_color = Color(0.552941, 0.0980392, 0.843137, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -46,7 +53,7 @@ debug_color = Color(0.405622, 0.466561, 1, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Gun" parent="." instance=ExtResource("3_i3pqv")]
+[node name="Gun" parent="." groups=["player_technique"] instance=ExtResource("3_i3pqv")]
 unique_name_in_owner = true
 position = Vector2(1.19209e-07, -1.19209e-07)
 rotation = 0.127409
@@ -61,12 +68,12 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_i3pqv")
 debug_color = Color(1, 0, 0.0931407, 0.42)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="health_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-offset_left = -84.0
-offset_top = -173.0
-offset_right = 87.0
-offset_bottom = -146.0
+offset_left = -85.0
+offset_top = -208.0
+offset_right = 86.0
+offset_bottom = -181.0
 theme_override_styles/background = ExtResource("3_hqtel")
 theme_override_styles/fill = SubResource("StyleBoxFlat_onrkg")
 value = 100.0
@@ -75,12 +82,22 @@ show_percentage = false
 [node name="qi_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -85.0
-offset_top = -129.0
+offset_top = -164.0
 offset_right = 86.0
-offset_bottom = -102.0
+offset_bottom = -137.0
+theme_override_styles/background = ExtResource("3_hqtel")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqtel")
+value = 100.0
+show_percentage = false
+
+[node name="experience_bar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -85.0
+offset_top = -249.0
+offset_right = 85.0
+offset_bottom = -220.0
 theme_override_styles/background = ExtResource("3_hqtel")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i3pqv")
-value = 100.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,184 @@
+[gd_scene load_steps=2 format=3 uid="uid://c77e14ah7wv7x"]
+
+[ext_resource type="Script" uid="uid://crx7sfpg6bjr" path="res://ui/stage_up_ui/stage_up_screen.gd" id="1_3goqk"]
+
+[node name="StageUpScreen" type="Control" node_paths=PackedStringArray("old_stage_label", "new_stage_label", "str_label", "gra_label", "pow_label", "con_label", "def_label", "hp_label", "qi_label", "qi_regen_label")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_3goqk")
+old_stage_label = NodePath("VBoxContainer/MarginContainer/HBoxContainer2/Old")
+new_stage_label = NodePath("VBoxContainer/MarginContainer/HBoxContainer2/New")
+str_label = NodePath("VBoxContainer/VBoxContainer/STRHBox/StrengthBonus")
+gra_label = NodePath("VBoxContainer/VBoxContainer/GRAHBox/GraceBonus")
+pow_label = NodePath("VBoxContainer/VBoxContainer/POWHBox/PowerNew")
+con_label = NodePath("VBoxContainer/VBoxContainer/CONHBox/ControlNew")
+def_label = NodePath("VBoxContainer/VBoxContainer/DEFHBox/DefenseNew")
+hp_label = NodePath("VBoxContainer/VBoxContainer/HPHbox/HPNew")
+qi_label = NodePath("VBoxContainer/VBoxContainer/QIHbox/QiRegenNew")
+qi_regen_label = NodePath("VBoxContainer/VBoxContainer/QIGenHbox/QiRegenNew")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -196.5
+offset_right = 228.0
+offset_bottom = 196.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Stage Up
+ Bonus!"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Old" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "1 -> "
+
+[node name="New" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="STRHBox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Strength" type="Label" parent="VBoxContainer/VBoxContainer/STRHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Strength: "
+
+[node name="StrengthBonus" type="Label" parent="VBoxContainer/VBoxContainer/STRHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="GRAHBox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Grace" type="Label" parent="VBoxContainer/VBoxContainer/GRAHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Grace: "
+
+[node name="GraceBonus" type="Label" parent="VBoxContainer/VBoxContainer/GRAHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="POWHBox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Power" type="Label" parent="VBoxContainer/VBoxContainer/POWHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Power:  "
+
+[node name="PowerNew" type="Label" parent="VBoxContainer/VBoxContainer/POWHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="CONHBox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Control" type="Label" parent="VBoxContainer/VBoxContainer/CONHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Control:  "
+
+[node name="ControlNew" type="Label" parent="VBoxContainer/VBoxContainer/CONHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="DEFHBox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Defense" type="Label" parent="VBoxContainer/VBoxContainer/DEFHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Defense: "
+
+[node name="DefenseNew" type="Label" parent="VBoxContainer/VBoxContainer/DEFHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="HPHbox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HP" type="Label" parent="VBoxContainer/VBoxContainer/HPHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Health:  "
+
+[node name="HPNew" type="Label" parent="VBoxContainer/VBoxContainer/HPHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="QIHbox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Qi" type="Label" parent="VBoxContainer/VBoxContainer/QIHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Qi: "
+
+[node name="QiRegenNew" type="Label" parent="VBoxContainer/VBoxContainer/QIHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="QIGenHbox" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Qi" type="Label" parent="VBoxContainer/VBoxContainer/QIGenHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Qi Regen: "
+
+[node name="QiRegenNew" type="Label" parent="VBoxContainer/VBoxContainer/QIGenHbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"

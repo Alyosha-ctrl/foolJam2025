@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4msthu2puely"]
+[gd_scene load_steps=9 format=3 uid="uid://c4msthu2puely"]
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
+[ext_resource type="PackedScene" uid="uid://bs0ndmavguhjt" path="res://ui/level_up_ui/level_up_screen.tscn" id="2_od0vt"]
+[ext_resource type="PackedScene" uid="uid://cebkk3xvtraj4" path="res://music/audio_nodes/main_audio_node.tscn" id="2_on220"]
 [ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
 [ext_resource type="AudioStream" uid="uid://bh6vwsbdfh16r" path="res://music_zapsplat_game_music_action_fast_euro_house_pumping_fun_arcade_rave_024.mp3" id="4_od0vt"]
 [ext_resource type="PackedScene" uid="uid://mtq76jfdkgbv" path="res://mine.tscn" id="6_tqqor"]
+[ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="5_tqqor"]
 
 [sub_resource type="Curve2D" id="Curve2D_od0vt"]
 _data = {
@@ -16,6 +19,8 @@ point_count = 5
 y_sort_enabled = true
 script = ExtResource("1_wghd7")
 
+[node name="MainAudioNode" parent="." instance=ExtResource("2_on220")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -26,9 +31,10 @@ offset_right = 1925.0
 offset_bottom = 1085.0
 color = Color(0.366595, 0.366595, 0.366595, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_bauih")]
+[node name="Player" parent="." node_paths=PackedStringArray("lvl_up_screen") instance=ExtResource("1_bauih")]
 unique_name_in_owner = true
 position = Vector2(830, 519)
+lvl_up_screen = NodePath("../level_up_screen/LevelUpScreen")
 
 [node name="Path2D" type="Path2D" parent="Player"]
 unique_name_in_owner = true
@@ -99,8 +105,24 @@ unique_name_in_owner = true
 wait_time = 0.25
 autostart = true
 
+[node name="stage_up_screen" type="CanvasLayer" parent="."]
+
+[node name="StageUpScreen" parent="stage_up_screen" node_paths=PackedStringArray("primary_audio_node") instance=ExtResource("5_tqqor")]
+visible = false
+primary_audio_node = NodePath("../../MainAudioNode")
+
+[node name="level_up_screen" type="CanvasLayer" parent="."]
+
+[node name="LevelUpScreen" parent="level_up_screen" node_paths=PackedStringArray("player", "primary_audio_node") instance=ExtResource("2_od0vt")]
+visible = false
+player = NodePath("../../Player")
+primary_audio_node = NodePath("../../MainAudioNode")
+increased_color = Color(0, 0, 0, 1)
+
 [node name="game_over_screen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
+process_priority = 1
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="game_over_screen"]

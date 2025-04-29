@@ -1,9 +1,12 @@
 extends CharacterBody2D
+@export var lvl_up_screen: LevelUpScreen
 
 var actor_type : String = "player"
 
 var stat_dist : float = 5
 var level : int = 1
+var exp : float = 0
+var exp_max : int = 9
 
 signal death
 signal changed_speed
@@ -36,11 +39,29 @@ func set_speed(new_speed):
 func set_qi_bar() -> void:
 	%qi_bar.value = 100*(qi/max_qi)
 	
+func set_health(newHealth) -> void:
+	health = newHealth
+	set_health_bar()
+	
 func set_health_bar() -> void:
-	%ProgressBar.value = 100*(health/max_health)
+	%health_bar.value = 100*(health/max_health)
+
+func set_exp_bar() -> void:
+	%experience_bar.max_value = exp_max
+	%experience_bar.value = exp
 	
 func set_qi_regeneration() -> void:
 	qi_regeneration = control*9
+	
+		
+func add_exp(newExp : float):
+	exp += newExp
+	while(exp > exp_max):
+		exp -= exp_max
+		level_up()
+		exp_max+=9*(level/10 + 1)
+	set_exp_bar()
+	
 	
 func _ready() -> void:
 	set_speed(speed)
@@ -52,11 +73,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("exit_game"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	
 	var overlaps = %hurt_box.get_overlapping_bodies()
 	for entity in overlaps:
-		entity.take_damage(strength*delta, "bump", strength*2)
+		entity.take_damage((strength+grace/2)*delta, "bump", strength*2)
 			
 
 func take_damage(damage, element, pierce):
@@ -67,7 +88,7 @@ func take_damage(damage, element, pierce):
 	if(damage <= 0):
 		damage = 1
 	health -= damage
-	%ProgressBar.value = 100*(health/max_health)
+	%health_bar.value = 100*(health/max_health)
 	if(health <= 0):
 		#Hides death.
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
@@ -76,6 +97,8 @@ func take_damage(damage, element, pierce):
 		smoke.global_position = global_position
 		death.emit()
 		
+		lvl_up_screen.process_mode = Node.PROCESS_MODE_DISABLED
+		get_tree().paused = true
 func multiply_stats(statMult):
 	strength*=statMult
 	grace*=statMult
@@ -88,7 +111,7 @@ func multiply_stats(statMult):
 	qi = max_qi*1
 	set_qi_regeneration()
 	set_speed(calculate_speed())
-	%ProgressBar.value = 100*(health/max_health)
+	%health_bar.value = 100*(health/max_health)
 	set_qi_bar()
 	
 func add_stats(statMult):
@@ -102,21 +125,39 @@ func add_stats(statMult):
 	max_qi = power*25
 	qi = max_qi*1
 	set_speed(calculate_speed())
-	%ProgressBar.value = 100*(health/max_health)
-	
+	%health_bar.value = 100*(health/max_health)
+
+func reset_bars() -> void:
+	health = max_health * 1
+	qi = max_qi * 1
+	set_health_bar()
+	set_qi_bar()
+
+
 func level_up():
-	add_stats(stat_dist)
+	lvl_up_screen.player_val_to_old_stats()
+	
+
 	level += 1
 	if(level%10 == 0):
 		increase_stage()
+	else:
+		lvl_up_screen.show_lv_screen(stat_dist * 5)
+	
+	lvl_up_screen.player_val_to_new_stats()
 	%Gun.level_up()
+
 	print("Level Up")
 	print("Level: " + str(level))
 		
 func increase_stage():
-	multiply_stats((level/10) + 1)
+	# multiply_stats((level/10) + 1)
 	#Multiplies the new stat distribution
+	
+	lvl_up_screen.show_stage_screen(stat_dist * 5)
+	
 	stat_dist*=(level/10) + 1
+
 	print("Stage Increased")
 	const GUN = preload("res://gun.tscn")
 	var new_gun = GUN.instantiate()
@@ -124,22 +165,32 @@ func increase_stage():
 	new_gun.set_level(level)
 	if(num_of_tech == 1):
 		%tech_position1.add_child(new_gun)
+		new_gun.technique_num = "technique1"
+		new_gun.action = "wave"
 	elif(num_of_tech == 2):
 		%tech_position2.add_child(new_gun)
+		new_gun.technique_num = "technique2"
 	elif(num_of_tech == 3):
 		%tech_position3.add_child(new_gun)
+		new_gun.technique_num = "technique3"
 	elif(num_of_tech == 4):
 		%tech_position4.add_child(new_gun)
+		new_gun.technique_num = "technique4"
 	elif(num_of_tech == 5):
 		%tech_position5.add_child(new_gun)
+		new_gun.technique_num = "technique5"
 	elif(num_of_tech == 6):
 		%tech_position6.add_child(new_gun)
+		new_gun.technique_num = "technique6"
 	elif(num_of_tech == 7):
 		%tech_position7.add_child(new_gun)
+		new_gun.technique_num = "technique7"
 	elif(num_of_tech == 8):
 		%tech_position8.add_child(new_gun)
+		new_gun.technique_num = "technique8"
 	elif(num_of_tech == 9):
 		%tech_position9.add_child(new_gun)
+		new_gun.technique_num = "technique9"
 	num_of_tech +=1
 	
 		
@@ -149,7 +200,7 @@ func increase_stage():
 func _on_timer_timeout() -> void:
 	#Once per second regenerate qi, 
 	#apply all buffs, and apply all debuffs
-	qi += qi_regeneration
+	qi += control*9
 	
 	#Go through the status list(currently non existant)
 	

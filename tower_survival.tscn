@@ -141,75 +141,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -510.0
-offset_top = -138.0
-offset_right = 503.0
-offset_bottom = 139.0
+offset_left = -731.0
+offset_top = -284.0
+offset_right = 725.0
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 100
-text = "Game Over
+text = "Heaven Remains Out of Reach
+Game Over
 "
 horizontal_alignment = 1
-
-[node name="credits" type="Label" parent="game_over_screen/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.184
-anchor_top = 0.076
-anchor_right = 0.184
-anchor_bottom = 0.076
-offset_left = -344.28
-offset_top = -78.08
-offset_right = 198.72
-offset_bottom = 58.92
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "Credits"
-
-[node name="Label3" type="Label" parent="game_over_screen/ColorRect/credits"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -268.5
-offset_top = -16.5
-offset_right = 1117.5
-offset_bottom = 1016.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Game Director
-Alexey “Azriel” Berezhnoy
-
-Game Programmers
-Alexey “Azriel” Berezhnoy
-Joshua Christopher Jose Torres-Hopkins
-
-Sound Designer
-Joshua Christopher Jose Torres-Hopkins
-
-Code Advisors
-Zionna Brown, various help in wrangling Godot
-Jackie Luc, increased speed, altering camera zoom
-Joshua Christopher Jose Torres-Hopkins, performance help
-
-Playtesters
-Alora Cochrane
-Zionna Brown
-Joshua Christopher Jose Torres-Hopkins
-Tomas ___
-Emanuel ___
-Alexey “Azriel” Berezhnoy
-
-Intenet Obtained Code
-GDQuest, for \"Your First 2D GAME From Zero in Godot 4 **Vampire Survivor Style**\"
-Tutorial, and source code, used, and modified under the CC by 4.0 license, https://creativecommons.org/licenses/by/4.0/
-Loipesnas for \"Smoother look_at() in 2d\"
-"
 
 [node name="Control" type="Control" parent="game_over_screen"]
 layout_mode = 3

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://mtq76jfdkgbv"]
 
-[ext_resource type="Script" path="res://mine_character.gd" id="1_iuis7"]
+[ext_resource type="Script" uid="uid://c1fpwv52ur5oj" path="res://mine_character.gd" id="1_iuis7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iuis7"]
-radius = 20.0
+radius = 31.0161
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6hay"]
 radius = 156.08
@@ -15,7 +15,10 @@ radius = 19.0263
 script = ExtResource("1_iuis7")
 
 [node name="hit_box" type="Area2D" parent="."]
-visible = false
+
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
 shape = SubResource("CircleShape2D_iuis7")
@@ -37,3 +40,6 @@ shape = SubResource("CircleShape2D_i6hay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i213m")
+
+[connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_entered" from="hurt_box" to="." method="_on_hurt_box_body_entered"]

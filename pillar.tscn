@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_tcmdu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikdqj"]
-radius = 19.105
+radius = 17.9231
 
 [node name="Pillar" type="StaticBody2D" groups=["entities"]]
 script = ExtResource("1_r8rte")

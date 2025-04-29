@@ -46,6 +46,11 @@ func _ready() -> void:
 		value = 15
 		cost = 45
 		type = "support"
+	elif(action == "dash"):
+		original = 3
+		value = 5
+		cost = 25
+		type = "melee"
 		
 	if(modifier == "powerful"):
 		original *= 1.15
@@ -234,6 +239,14 @@ func heal_bullet():
 	new_bullet.global_rotation = $%shooting_point.global_rotation
 	
 	$%shooting_point.add_child(new_bullet)
+
+func dash():
+	if(!remove_qi()):
+		return;
+	var dashValue = 1 + log(value_adder())/10
+	print(dashValue)
+	caster.dash(dashValue)
+	
 
 #MAYBE MAKE THIS MORE EFFICIENT
 func set_level(level_num : int)->void:

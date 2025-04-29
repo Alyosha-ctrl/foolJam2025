@@ -23,6 +23,9 @@ var qi_regeneration : float = control*9
 const speed_multiplier = 600
 var speed : float = calculate_speed()
 var zoom_cap : float = .36
+
+var friction : float = .5
+
 var num_of_tech : int = 1
 #var zoom_multiplier = 1/(speed/speed_multiplier)
 func calculate_speed():
@@ -78,6 +81,11 @@ func _physics_process(delta: float) -> void:
 	velocity = direction*speed
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("dash"):
+		dash(1)
+	
+	
+	
 	if Input.is_action_just_pressed("exit_game"):
 		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	
@@ -85,6 +93,12 @@ func _physics_process(delta: float) -> void:
 	for entity in overlaps:
 		entity.take_damage((strength+grace/2)*delta, "bump", strength*2)
 			
+
+func dash(dashValue):
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity += direction*(dashValue*(speed*5))
+	velocity *= 1 - (friction*get_physics_process_delta_time())
+	move_and_slide()
 
 func take_damage(damage, element, pierce):
 	var defense_local = defense-pierce

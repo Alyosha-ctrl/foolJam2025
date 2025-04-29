@@ -2,6 +2,7 @@ extends CharacterBody2D
 @export var lvl_up_screen: LevelUpScreen
 
 var actor_type : String = "player"
+var can_dash : bool = true
 
 var stat_dist : float = 5
 var level : int = 1
@@ -81,8 +82,9 @@ func _physics_process(delta: float) -> void:
 	velocity = direction*speed
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and can_dash:
 		dash(1)
+		can_dash = false
 	
 	
 	
@@ -222,7 +224,7 @@ func _on_timer_timeout() -> void:
 	#Once per second regenerate qi, 
 	#apply all buffs, and apply all debuffs
 	qi += control*9
-	
+	can_dash = true
 	#Go through the status list(currently non existant)
 	
 	set_qi_bar()

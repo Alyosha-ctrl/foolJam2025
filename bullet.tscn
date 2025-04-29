@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2iqckmv3ovxq"]
+[gd_scene load_steps=2 format=3 uid="uid://b2iqckmv3ovxq"]
 
 [ext_resource type="Script" uid="uid://njukkknlrcd1" path="res://bullet.gd" id="1_v8qja"]
-[ext_resource type="Texture2D" uid="uid://dftkbqwsfd68r" path="res://pistol/projectile.png" id="2_t4vbm"]
 
 [node name="Bullet" type="Area2D"]
 top_level = true
@@ -17,11 +16,6 @@ polygon = PackedVector2Array(-13, -12, -13, 12, 18, 0)
 [node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
 scale = Vector2(0.630258, 0.845238)
 polygon = PackedVector2Array(-18.8065, -12.169, -18.8065, 12.169, 23.1464, 0)
-
-[node name="Projectile" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-11, -1)
-texture = ExtResource("2_t4vbm")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-14, -13, 19, 0, -14, 13)

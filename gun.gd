@@ -4,7 +4,7 @@ extends Area2D
 var caster
 var type : String = "ranged"
 var element : String = "creation"
-var modifier : String = "auto_aim"
+var modifier : String = "quick"
 var action : String = "shoot"
 
 var technique_num : String = "technique0"
@@ -30,18 +30,41 @@ func _ready() -> void:
 		original = 3.0
 		value = 15
 		cost = 25
+		type = "ranged"
 	elif(action== "shoot"):
 		original = .3
 		value = 10
 		cost = 15
+		type = "ranged"
+	elif(action == "heal_bullet"):
+		original = 10
+		value = 10
+		cost = 30
+		type = "support"
+	elif(action == "heal_wave"):
+		original = 15
+		value = 15
+		cost = 45
+		type = "support"
 		
 	if(modifier == "powerful"):
 		original *= 1.15
 		value = value * 1.3
 		stat_dist["value"] = stat_dist["value"]*1.3
-		
 	elif(modifier == "large"):
 		original_size += 500
+	elif(modifier == "quick"):
+		original *= .7
+		cost = cost*1.15
+		stat_dist["cost"] = stat_dist["cost"]*1.15
+	elif(modifier == "cheap"):
+		value = value *.85
+		stat_dist["value"] = stat_dist["value"]*.85
+		cost = cost*.7
+		stat_dist["cost"] = stat_dist["cost"]*.7
+	elif(modifier == "self"):
+		value = value * 1.3
+		stat_dist["value"] = stat_dist["value"]*1.3
 	
 	
 
@@ -89,6 +112,18 @@ func _physics_process(delta: float) -> void:
 						shoot()
 					elif(action == "wave"):
 						wave()
+					elif(action == "heal_bullet"):
+						heal_bullet()
+					time-= cooldown
+		elif(modifier == "self"):
+			look_at(caster.global_position)
+			if(time >= cooldown):
+					if(action == "shoot"):
+						shoot()
+					elif(action == "wave"):
+						wave()
+					elif(action == "heal_bullet"):
+						heal_bullet()
 					time -= cooldown
 		elif (type == "ranged" and caster.actor_type == "mob"):
 			#var entities_in_range = get_overlapping_bodies()
@@ -100,6 +135,8 @@ func _physics_process(delta: float) -> void:
 					shoot()
 				elif(action == "wave"):
 					wave()
+				elif(action == "heal_bullet"):
+						heal_bullet()
 				time -= cooldown
 		elif(type == "ranged" and caster.actor_type == "player"):
 			look_at(get_global_mouse_position())
@@ -110,6 +147,8 @@ func _physics_process(delta: float) -> void:
 					shoot()
 				elif(action == "wave"):
 					wave()
+				elif(action == "heal_bullet"):
+						heal_bullet()
 				time -= cooldown
 		
 				
@@ -172,6 +211,24 @@ func wave():
 	new_bullet.pierce = pierce+(caster.strength/3)
 	new_bullet.element = element
 	new_bullet.scale = Vector2(1,1)*get_scale_multiplier()
+	new_bullet.global_position = $%shooting_point.global_position
+	#Replace with the rotation aimed at the nearest enemy
+	new_bullet.global_rotation = $%shooting_point.global_rotation
+	
+	$%shooting_point.add_child(new_bullet)
+	
+func heal_bullet():
+	if(!remove_qi()):
+		return;
+	const BULLET = preload("res://healing_bullet.tscn")
+	await get_tree().create_timer(wait_time).timeout
+	var new_bullet = BULLET.instantiate()
+	new_bullet.set_value(value_adder())
+	new_bullet.technique = self
+	new_bullet.technique_size = size
+	new_bullet.speed = size
+	new_bullet.pierce = pierce+(caster.strength/3)
+	new_bullet.element = element
 	new_bullet.global_position = $%shooting_point.global_position
 	#Replace with the rotation aimed at the nearest enemy
 	new_bullet.global_rotation = $%shooting_point.global_rotation

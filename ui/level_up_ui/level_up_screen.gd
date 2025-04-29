@@ -215,8 +215,9 @@ func show_stage_screen(points_to_add: int) -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	hide_lv_screen()
-	set_player_stats()
+	if(stat_points == 0):
+		hide_lv_screen()
+		set_player_stats()
 
 
 func update_hp_qi() -> void:

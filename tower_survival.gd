@@ -16,7 +16,7 @@ func _ready() -> void:
 func spawn_mob():
 	#In the future this will also create the color of the mob
 	#And it's random technique's
-	var spawn_type = ["swarm", "mob", "boss", "swarm", "swarm", "mob"]
+	var spawn_type = ["swarm", "mob", "boss", "swarm", "swarm", "mob", "ranged"]
 	spawn_type = spawn_type[randi_range(0,len(spawn_type)-1)]
 	if(spawn_type == "mob"):
 		var new_mob := preload("res://mob.tscn").instantiate()
@@ -53,6 +53,13 @@ func spawn_mob():
 		%PathFollow2D.progress_ratio = randf()
 		new_mob.global_position = %PathFollow2D.global_position
 		add_child(new_mob)
+	elif(spawn_type == "ranged"):
+		var new_mob := preload("res://ranged_mob.tscn").instantiate()
+		new_mob.set_level(%Player.level-2)
+		#Randomly create's the mob on a point along the path
+		%PathFollow2D.progress_ratio = randf()
+		new_mob.global_position = %PathFollow2D.global_position
+		add_child(new_mob)
 	
 func spawn_object():
 	#later will be a random object now is just a tree soo to be pillar.
@@ -66,7 +73,7 @@ func spawn_object():
 func _on_timer_timeout() -> void:
 	#Randomly choose spawn_swarm, spawn_cluster, spawn_boss 
 	#later once levels are implemented
-	%Player.add_exp(1)
+	%Player.add_exp(100)
 	if(!(len(get_children()) > max_entities)):
 		spawn_mob()
 		spawn_object()

@@ -188,15 +188,14 @@ func increase_stage():
 	new_gun.get_random_technique()
 	new_gun.set_level(level)
 	if(num_of_tech == 1):
-		%tech_position1.add_child(new_gun)
 		new_gun.technique_num = "technique1"
 		new_gun.action = "wave"
 		new_gun.modifier = "powerful"
 		new_gun.set_up()
+		%tech_position1.add_child(new_gun)
 	elif(num_of_tech == 2):
 		%tech_position2.add_child(new_gun)
 		new_gun.technique_num = "technique2"
-		
 	elif(num_of_tech == 3):
 		%tech_position3.add_child(new_gun)
 		new_gun.technique_num = "technique3"

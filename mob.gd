@@ -20,6 +20,12 @@ const speed_multiplier: float = 300
 @onready var player := get_node("/root/Game/Player")
 @onready var cooldown : float = %Timer.wait_time
 	
+func _ready() -> void:
+	if(%border.scale == Vector2(1.4, 1.4)):
+		print("In has Gun")
+		%Gun.caster = self
+		$Gun.get_random_ranged_technique()
+	
 
 func _physics_process(delta: float) -> void:
 	var direction := global_position.direction_to(player.global_position)
@@ -95,6 +101,9 @@ func add_stats(statMult):
 		
 func level_up():
 	add_stats(stat_dist)
+	if(self.has_node("res://gun.tscn")):
+		%Gun.level_up()
+	
 	level += 1
 	if(level%10 == 0):
 		increase_stage()

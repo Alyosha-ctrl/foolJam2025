@@ -60,7 +60,8 @@ polygon = PackedVector2Array(-77, -29, -113, 37, -40, 37)
 
 [node name="Gun" parent="." instance=ExtResource("3_7vu6q")]
 unique_name_in_owner = true
-scale = Vector2(0.5, 0.5)
+position = Vector2(1, 91)
+rotation = 1.60022
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

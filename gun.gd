@@ -123,7 +123,7 @@ func set_cost():
 
 func _physics_process(delta: float) -> void:
 	time+=delta
-	if (Input.is_action_just_pressed(technique_num) and active == true):
+	if (Input.is_action_just_pressed(technique_num) and active == true and caster.actor_type == "player"):
 		active = false
 	elif(Input.is_action_just_pressed(technique_num)):
 		active = true

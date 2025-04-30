@@ -16,7 +16,7 @@ func _ready() -> void:
 func spawn_mob():
 	#In the future this will also create the color of the mob
 	#And it's random technique's
-	var spawn_type = ["swarm", "mob", "boss", "swarm", "swarm", "mob", "ranged"]
+	var spawn_type = ["swarm", "mob", "boss", "swarm", "swarm", "mob"]
 	spawn_type = spawn_type[randi_range(0,len(spawn_type)-1)]
 	if(spawn_type == "mob"):
 		var new_mob := preload("res://mob.tscn").instantiate()
@@ -49,13 +49,6 @@ func spawn_mob():
 		var new_mob := preload("res://mob.tscn").instantiate()
 		new_mob.set_level(%Player.level-1)
 		new_mob.scale = Vector2(1.25, 1.25)
-		#Randomly create's the mob on a point along the path
-		%PathFollow2D.progress_ratio = randf()
-		new_mob.global_position = %PathFollow2D.global_position
-		add_child(new_mob)
-	elif(spawn_type == "ranged"):
-		var new_mob := preload("res://ranged_mob.tscn").instantiate()
-		new_mob.set_level(%Player.level-2)
 		#Randomly create's the mob on a point along the path
 		%PathFollow2D.progress_ratio = randf()
 		new_mob.global_position = %PathFollow2D.global_position

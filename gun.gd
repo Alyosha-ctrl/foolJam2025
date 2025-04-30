@@ -7,18 +7,6 @@ var element : String = "creation"
 var modifier : String = "quick"
 var action : String = "shoot"
 
-var ranged_action_list : Dictionary = {"shoot":"A simple triangle set out to slice foes, it is cheap and cast quickly but it is weak and has no special properties",
-	"wave":"A simple large projectile that scythes through enemies, it is powerful but expensive and slow"
-}
-
-var total_action_list : Dictionary = {
-	"shoot":"A simple triangle set out to slice foes, it is cheap and cast quickly but it is weak and has no special properties",
-	"wave":"A simple large projectile that scythes through enemies, it is powerful but expensive and slow",
-	"heal_bullet":"A simple sphere set out to heal injuries, it is powerful and its powers to heal rare, but it has a very long cooldown, and has an extreme expense"
-}
-
-var total_modifier_list = ["cheap", "auto_aim", "quick", "powerful"]
-
 var technique_num : String = "technique0"
 var active : bool = true
 var time : float = 0.0
@@ -38,9 +26,6 @@ var stat_dist : Dictionary = {"cost":5, "value":5, "pierce":1}
 var original: float= .5
 
 func _ready() -> void:
-	set_up()
-	
-func set_up():
 	if(action == "wave"):
 		original = 3.0
 		value = 15
@@ -86,15 +71,7 @@ func set_up():
 		value = value * 1.3
 		stat_dist["value"] = stat_dist["value"]*1.3
 	
-func get_random_ranged_technique():
-	action = ranged_action_list.keys()[randi_range(0, ranged_action_list.keys().size()-1)]
-	modifier = total_modifier_list[randi_range(0, total_modifier_list.size()-1)]
-	set_up()
 	
-func get_random_technique():
-	action = total_action_list.keys()[randi_range(0, total_action_list.keys().size()-1)]
-	modifier = total_modifier_list[randi_range(0, total_modifier_list.size()-1)]
-	set_up()
 
 func get_size_from_action() -> float:
 	if(action == "shoot"):
@@ -123,7 +100,7 @@ func set_cost():
 
 func _physics_process(delta: float) -> void:
 	time+=delta
-	if (Input.is_action_just_pressed(technique_num) and active == true and caster.actor_type == "player"):
+	if (Input.is_action_just_pressed(technique_num) and active == true):
 		active = false
 	elif(Input.is_action_just_pressed(technique_num)):
 		active = true
@@ -164,7 +141,7 @@ func _physics_process(delta: float) -> void:
 				elif(action == "wave"):
 					wave()
 				elif(action == "heal_bullet"):
-					heal_bullet()
+						heal_bullet()
 				time -= cooldown
 		elif(type == "ranged" and caster.actor_type == "player"):
 			look_at(get_global_mouse_position())

@@ -29,7 +29,6 @@ Staging Up
 Every 10 levels you Stage Up, and multiply all your stats, this rewards specialization, but mid stage gameplay punishes it. Experiment see how much you can get away with.
 Bump Damage
 Due to the damage its best to do this to weak slow mobs at the edge of the pack.
-Unlinke all other cooldowns the cooldown for the dash never increases or decreases
 The duration of a status good or bad is equal to half the cooldown of the technique. 
 Negative Scaling
 All costs and negative effects scale in level except for cooldown and wait_time, so while a technique leveling might increase its damage it will also increase its cost.

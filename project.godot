@@ -196,7 +196,7 @@ dash={
 
 [physics]
 
-common/physics_ticks_per_second=15
+common/physics_ticks_per_second=20
 common/physics_jitter_fix=0.0
 2d/solver/solver_iterations=9
 common/physics_interpolation=true

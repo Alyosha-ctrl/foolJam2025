@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4msthu2puely"]
+[gd_scene load_steps=10 format=3 uid="uid://c4msthu2puely"]
 
 [ext_resource type="PackedScene" uid="uid://jr86s26ll4l" path="res://player.tscn" id="1_bauih"]
 [ext_resource type="Script" uid="uid://bs6xgcq4r3cwj" path="res://tower_survival.gd" id="1_wghd7"]
-[ext_resource type="AudioStream" uid="uid://bbkfs465m2r8f" path="res://music/audio_files/pick_up/Pick Up.wav" id="2_38foq"]
 [ext_resource type="PackedScene" uid="uid://bs0ndmavguhjt" path="res://ui/level_up_ui/level_up_screen.tscn" id="2_od0vt"]
 [ext_resource type="PackedScene" uid="uid://cebkk3xvtraj4" path="res://music/audio_nodes/main_audio_node.tscn" id="2_on220"]
 [ext_resource type="PackedScene" uid="uid://dgt6u56l0ew47" path="res://pillar.tscn" id="2_qe1ew"]
@@ -19,10 +18,6 @@ point_count = 5
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_wghd7")
-
-[node name="PickUp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_38foq")
-volume_db = 4.0
 
 [node name="MainAudioNode" parent="." instance=ExtResource("2_on220")]
 
@@ -197,6 +192,18 @@ position = Vector2(1368, 358)
 
 [node name="mine2" parent="." instance=ExtResource("6_tqqor")]
 position = Vector2(822, 142)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 660.0
+offset_top = 663.0
+offset_right = 1026.0
+offset_bottom = 985.0
+text = "WASD, and arrow keys to move
+SPACE to dash
+Mouse to aim for all non auto aim skills
+0-9 to toggle specific technique
+Ex:press 0 to toggle first technique, press 1 to toggle second etc ..."
+horizontal_alignment = 1
 
 [connection signal="changed_speed" from="Player" to="." method="_on_player_changed_speed"]
 [connection signal="death" from="Player" to="." method="_on_player_death"]

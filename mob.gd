@@ -22,6 +22,7 @@ const speed_multiplier: float = 300
 	
 func _ready() -> void:
 	if(%border.scale == Vector2(1.4, 1.4)):
+		stat_dist = 4
 		%Gun.caster = self
 		%Gun.get_random_ranged_technique()
 		%Gun.set_level(level)

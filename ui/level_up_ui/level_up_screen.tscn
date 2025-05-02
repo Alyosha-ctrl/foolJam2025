@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs0ndmavguhjt"]
+[gd_scene load_steps=4 format=3 uid="uid://bs0ndmavguhjt"]
 
 [ext_resource type="Script" uid="uid://bhahthbrxvo8b" path="res://ui/level_up_ui/level_up_screen.gd" id="1_nsbu3"]
 [ext_resource type="PackedScene" uid="uid://c77e14ah7wv7x" path="res://ui/stage_up_ui/stage_up_screen.tscn" id="2_7l22l"]
+[ext_resource type="StyleBox" uid="uid://cntu03xpepvw8" path="res://new_style_box_flat.tres" id="2_y22qg"]
 
 [node name="LevelUpScreen" type="Control" node_paths=PackedStringArray("stage_up_container", "stage_up_screen", "stat_point_label", "increase_text_field", "lv_old_label", "lv_new_label", "str_old_label", "str_new_label", "gra_old_label", "gra_new_label", "pow_old_label", "pow_new_label", "con_old_label", "con_new_label", "def_old_label", "def_new_label", "hp_old_label", "hp_new_label", "qi_old_label", "qi_new_label", "qi_regen_label", "qi_new_regen_label")]
 process_mode = 3
@@ -302,6 +303,7 @@ theme_override_constants/margin_left = 25
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/STRPlusHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("2_y22qg")
 text = "Strength increases 
 health and pierce damage"
 
@@ -326,6 +328,7 @@ theme_override_constants/margin_left = 25
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/GRAPlusHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("2_y22qg")
 text = "Grace increases movement speed
 and decreases \"wait_time\", the amount
 of time that passes before a technique is used"
@@ -351,6 +354,7 @@ theme_override_constants/margin_left = 25
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/POWPlusHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("2_y22qg")
 text = "Power increases AoE size and
 max Qi"
 
@@ -375,6 +379,7 @@ theme_override_constants/margin_left = 25
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/CONPlusHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("2_y22qg")
 text = "Control reduces ability cooldowns and
 increases Qi recovery rate"
 
@@ -399,6 +404,7 @@ theme_override_constants/margin_left = 25
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/DEFPlusHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("2_y22qg")
 text = "Defense  reduces incoming damage and
 lowers Qi costs"
 
@@ -410,7 +416,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/HealthDescHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Health increases max HP"
+text = "Health is your vital force"
 
 [node name="QIDescHbox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
 layout_mode = 2
@@ -420,7 +426,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/QIDescHbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Qi is consumed to use activated abilities"
+text = "Qi is the fuel for your abilities"
 
 [node name="QIRegenDescHbox" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox"]
 layout_mode = 2
@@ -430,7 +436,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/AddingStatsVBox/QIRegenDescHbox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Qi regen is the rate at which Qi restores"
+text = "Qi regen is your Qi/s"
 
 [node name="StageUpContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2

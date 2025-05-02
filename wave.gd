@@ -3,7 +3,7 @@ extends Area2D
 var technique = "null"
 
 var travelled_disance := 0
-var speed := 2000
+var speed := 250
 var technique_size := 500
 var value:float = 0
 var element = "creation"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm7so46qbiyjw"]
+[gd_scene load_steps=6 format=3 uid="uid://doqgf8r5okijx"]
 
 [ext_resource type="Script" uid="uid://tyhkc1p8gbp0" path="res://mob.gd" id="1_j7qvj"]
 [ext_resource type="AudioStream" uid="uid://blvrytjmxkmq7" path="res://zapsplat_multimedia_game_sound_retro_thump_hit_92335.mp3" id="2_6pbl0"]

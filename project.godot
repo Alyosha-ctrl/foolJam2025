@@ -190,6 +190,10 @@ dash={
 ]
 }
 
+[internationalization]
+
+rendering/text_driver="ICU / HarfBuzz / Graphite (Built-in)"
+
 [layer_names]
 
 3d_physics/layer_2="player"
@@ -204,3 +208,4 @@ common/physics_interpolation=true
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

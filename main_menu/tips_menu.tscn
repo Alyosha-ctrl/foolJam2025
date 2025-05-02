@@ -20,6 +20,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/normal_font_size = 40
 text = "General Tips
+WASD and the arrow keys are general movement
+Dash with SPACE, you dash in the direction of your current movement
+Aim with your mouse if your technique does not have an auto aim modifier, in which case it will aim at the nearest enemy.
 Toggling
 You can toggle your techniques by pressing the number it is associated with
 Which is the order in which you attined the technique

@@ -54,6 +54,14 @@ text = "Exit"
 layout_mode = 2
 theme_override_constants/margin_left = 450
 
+[node name="Label" type="Label" parent="."]
+offset_left = 615.0
+offset_top = 495.0
+offset_right = 1335.0
+offset_bottom = 616.0
+text = "Reccomended To Read Gameplay Tips For First Time Players"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/GameplayTips" to="." method="_on_gameplay_tips_pressed"]

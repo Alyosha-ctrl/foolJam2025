@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://byovmacaboly2"]
 
-[ext_resource type="Script" path="res://wave.gd" id="1_sj2kr"]
+[ext_resource type="Script" uid="uid://bhdn2j5xk8tvv" path="res://wave.gd" id="1_sj2kr"]
 
 [node name="Wave" type="Area2D"]
 top_level = true

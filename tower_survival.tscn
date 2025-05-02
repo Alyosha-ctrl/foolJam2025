@@ -194,10 +194,11 @@ position = Vector2(1368, 358)
 position = Vector2(822, 142)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 660.0
-offset_top = 663.0
-offset_right = 1026.0
-offset_bottom = 985.0
+offset_left = 464.0
+offset_top = 642.0
+offset_right = 1222.0
+offset_bottom = 964.0
+theme_override_font_sizes/font_size = 21
 text = "WASD, and arrow keys to move
 SPACE to dash
 Mouse to aim for all non auto aim skills
